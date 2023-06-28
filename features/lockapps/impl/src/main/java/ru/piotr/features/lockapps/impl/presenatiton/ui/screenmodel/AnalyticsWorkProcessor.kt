@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.presenatiton.ui.screenmodel
+package ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
@@ -24,9 +24,9 @@ import ru.piotr.core.utils.platform.screenmodel.work.ActionResult
 import ru.piotr.core.utils.platform.screenmodel.work.EffectResult
 import ru.piotr.core.utils.platform.screenmodel.work.FlowWorkProcessor
 import ru.piotr.core.utils.platform.screenmodel.work.WorkCommand
-import ru.piotr.features.analytics.impl.domain.interactors.AnalyticsInteractor
-import ru.piotr.features.analytics.impl.presenatiton.ui.contract.AnalyticsAction
-import ru.piotr.features.analytics.impl.presenatiton.ui.contract.AnalyticsEffect
+import ru.piotr.features.lockapps.impl.domain.interactors.AnalyticsInteractor
+import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsAction
+import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsEffect
 import javax.inject.Inject
 
 /**

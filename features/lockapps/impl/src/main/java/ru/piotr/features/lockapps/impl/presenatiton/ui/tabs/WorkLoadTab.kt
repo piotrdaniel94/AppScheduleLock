@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.presenatiton.ui.tabs
+package ru.piotr.features.lockapps.impl.presenatiton.ui.tabs
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -44,10 +44,10 @@ import ru.piotr.core.ui.views.toMinutesAndHoursTitle
 import ru.piotr.core.utils.extensions.toDaysTitle
 import ru.piotr.core.utils.extensions.toMonthTitle
 import ru.piotr.core.utils.functional.TimePeriod
-import ru.piotr.features.analytics.impl.domain.entities.WorkLoadMap
-import ru.piotr.features.analytics.impl.presenatiton.theme.AnalyticsThemeRes
-import ru.piotr.features.analytics.impl.presenatiton.ui.contract.AnalyticsViewState
-import ru.piotr.features.analytics.impl.presenatiton.ui.views.TimeSelectorAndRefresh
+import ru.piotr.features.lockapps.impl.domain.entities.WorkLoadMap
+import ru.piotr.features.lockapps.impl.presenatiton.theme.AnalyticsThemeRes
+import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsViewState
+import ru.piotr.features.lockapps.impl.presenatiton.ui.views.TimeSelectorAndRefresh
 
 /**
  * @author Stanislav Aleshin on 20.04.2023.

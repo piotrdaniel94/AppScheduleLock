@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.presenatiton.ui.views
+package ru.piotr.features.lockapps.impl.presenatiton.ui.views
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -25,7 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import ru.piotr.core.ui.views.TopAppBarButton
 import ru.piotr.core.ui.views.TopAppBarEmptyButton
 import ru.piotr.core.ui.views.TopAppBarTitle
-import ru.piotr.features.analytics.impl.presenatiton.theme.AnalyticsThemeRes
+import ru.piotr.features.lockapps.impl.presenatiton.theme.AnalyticsThemeRes
 
 /**
  * @author Stanislav Aleshin on 30.03.2023.

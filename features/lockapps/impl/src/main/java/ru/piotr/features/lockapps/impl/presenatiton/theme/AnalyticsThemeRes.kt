@@ -16,19 +16,19 @@
 package ru.piotr.features.lockapps.impl.presenatiton.theme
 
 import androidx.compose.runtime.Composable
-import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LockAppsIcons
-import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LockAppsStrings
-import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LocalLockAppsIcons
-import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LocalLockAppsStrings
+import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.AnalyticsIcons
+import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.AnalyticsStrings
+import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LocalAnalyticsIcons
+import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LocalAnalyticsStrings
 
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
-internal object LockAppsThemeRes {
+internal object AnalyticsThemeRes {
 
-    val strings: LockAppsStrings
-        @Composable get() = LocalLockAppsStrings.current
+    val strings: AnalyticsStrings
+        @Composable get() = LocalAnalyticsStrings.current
 
-    val icons: LockAppsIcons
-        @Composable get() = LocalLockAppsIcons.current
+    val icons: AnalyticsIcons
+        @Composable get() = LocalAnalyticsIcons.current
 }

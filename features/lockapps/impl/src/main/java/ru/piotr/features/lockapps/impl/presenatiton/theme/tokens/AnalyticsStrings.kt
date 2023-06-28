@@ -21,7 +21,7 @@ import ru.piotr.core.ui.theme.tokens.TimePlannerLanguage
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
-internal data class LockAppsStrings(
+internal data class AnalyticsStrings(
     val topAppBarTitle: String,
     val menuIconDesc: String,
     val timeTabTitle: String,
@@ -43,7 +43,7 @@ internal data class LockAppsStrings(
     val halfYearTimePeriod: String,
 )
 
-internal val russianLockAppsStrings = LockAppsStrings(
+internal val russianAnalyticsStrings = AnalyticsStrings(
     topAppBarTitle = "Аналитика",
     menuIconDesc = "Меню",
     timeTabTitle = "Время",
@@ -65,7 +65,7 @@ internal val russianLockAppsStrings = LockAppsStrings(
     halfYearTimePeriod = "Полгода",
 )
 
-internal val englishLockAppsStrings = LockAppsStrings(
+internal val englishAnalyticsStrings = AnalyticsStrings(
     topAppBarTitle = "Analytics",
     menuIconDesc = "Menu",
     timeTabTitle = "Time",
@@ -87,11 +87,11 @@ internal val englishLockAppsStrings = LockAppsStrings(
     halfYearTimePeriod = "Half a year",
 )
 
-internal val LocalLockAppsStrings = staticCompositionLocalOf<LockAppsStrings> {
+internal val LocalAnalyticsStrings = staticCompositionLocalOf<AnalyticsStrings> {
     error("Analytics Strings is not provided")
 }
 
-internal fun fetchLockAppsStrings(language: TimePlannerLanguage) = when (language) {
+internal fun fetchAnalyticsStrings(language: TimePlannerLanguage) = when (language) {
     TimePlannerLanguage.EN -> englishAnalyticsStrings
     TimePlannerLanguage.RU -> russianAnalyticsStrings
 }

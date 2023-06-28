@@ -16,17 +16,17 @@
 package ru.piotr.features.lockapps.impl.domain.common
 
 import ru.piotr.core.utils.handlers.ErrorHandler
-import ru.piotr.features.lockapps.impl.domain.entities.LockAppsFailure
+import ru.piotr.features.lockapps.impl.domain.entities.AnalyticsFailure
 import javax.inject.Inject
 
 /**
  * @author Stanislav Aleshin on 22.04.2023.
  */
-internal interface LockAppsErrorHandler : ErrorHandler<LockAppsFailure> {
+internal interface AnalyticsErrorHandler : ErrorHandler<AnalyticsFailure> {
 
-    class Base @Inject constructor() : LockAppsErrorHandler {
+    class Base @Inject constructor() : AnalyticsErrorHandler {
         override fun handle(throwable: Throwable) = when (throwable) {
-            else -> LockAppsFailure.OtherError(throwable)
+            else -> AnalyticsFailure.OtherError(throwable)
         }
     }
 }

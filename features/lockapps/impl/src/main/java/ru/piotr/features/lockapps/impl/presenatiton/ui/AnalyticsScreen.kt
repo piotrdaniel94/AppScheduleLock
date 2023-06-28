@@ -32,12 +32,22 @@ import ru.piotr.core.ui.views.Scaffold
 import ru.piotr.core.ui.views.TabItem
 import ru.piotr.core.utils.managers.LocalDrawerManager
 import ru.piotr.core.utils.platform.screen.ScreenContent
+import ru.piotr.features.lockapps.impl.presenatiton.mappers.mapToMessage
+import ru.piotr.features.lockapps.impl.presenatiton.theme.AnalyticsTheme
+import ru.piotr.features.lockapps.impl.presenatiton.theme.AnalyticsThemeRes
+import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsEffect
+import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsEvent
+import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsViewState
+import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.rememberAnalyticsScreenModel
+import ru.piotr.features.lockapps.impl.presenatiton.ui.tabs.TimeTab
+import ru.piotr.features.lockapps.impl.presenatiton.ui.tabs.WorkLoadTab
+import ru.piotr.features.lockapps.impl.presenatiton.ui.views.AnalyticsTopAppBar
 import javax.inject.Inject
 
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
-internal class LockAppsScreen @Inject constructor() : Screen {
+internal class AnalyticsScreen @Inject constructor() : Screen {
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)

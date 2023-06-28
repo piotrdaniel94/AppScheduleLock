@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.domain.interactors
+package ru.piotr.features.lockapps.impl.domain.interactors
 
 import ru.piotr.core.utils.extensions.countMonthByDays
 import ru.piotr.core.utils.extensions.countWeeksByDays
@@ -26,11 +26,11 @@ import ru.piotr.core.utils.functional.DomainResult
 import ru.piotr.core.utils.functional.TimePeriod
 import ru.piotr.core.utils.functional.TimeRange
 import ru.piotr.core.utils.managers.DateManager
-import ru.piotr.features.analytics.impl.domain.common.AnalyticsEitherWrapper
-import ru.piotr.features.analytics.impl.domain.entities.AnalyticsFailure
-import ru.piotr.features.analytics.impl.domain.entities.CategoryAnalytic
-import ru.piotr.features.analytics.impl.domain.entities.ScheduleAnalytics
-import ru.piotr.features.analytics.impl.domain.entities.SubCategoryAnalytic
+import ru.piotr.features.lockapps.impl.domain.common.AnalyticsEitherWrapper
+import ru.piotr.features.lockapps.impl.domain.entities.AnalyticsFailure
+import ru.piotr.features.lockapps.impl.domain.entities.CategoryAnalytic
+import ru.piotr.features.lockapps.impl.domain.entities.ScheduleAnalytics
+import ru.piotr.features.lockapps.impl.domain.entities.SubCategoryAnalytic
 import ru.piotr.features.home.api.domains.entities.categories.Categories
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
 import ru.piotr.features.home.api.domains.entities.schedules.TimeTask

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.presenatiton.ui.views
+package ru.piotr.features.lockapps.impl.presenatiton.ui.views
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

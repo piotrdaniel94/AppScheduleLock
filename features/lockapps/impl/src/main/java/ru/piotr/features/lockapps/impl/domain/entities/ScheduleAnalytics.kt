@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.domain.entities
+package ru.piotr.features.lockapps.impl.domain.entities
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

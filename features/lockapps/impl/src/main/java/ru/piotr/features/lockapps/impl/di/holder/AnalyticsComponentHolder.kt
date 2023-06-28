@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.di.holder
+package ru.piotr.features.lockapps.impl.di.holder
 
-import ru.piotr.features.lockapps.api.di.LockAppsFeatureApi
+import ru.piotr.features.lockapps.api.di.AnalyticsFeatureApi
 import ru.piotr.features.lockapps.impl.di.LockAppsFeatureDependencies
 import ru.piotr.features.lockapps.impl.di.component.AnalyticsComponent
 import ru.piotr.module_injector.BaseComponentHolder
@@ -23,15 +23,15 @@ import ru.piotr.module_injector.BaseComponentHolder
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
-object AnalyticsComponentHolder : BaseComponentHolder<LockAppsFeatureApi, AnalyticsFeatureDependencies> {
+object AnalyticsComponentHolder : BaseComponentHolder<AnalyticsFeatureApi, LockAppsFeatureDependencies> {
 
     private var component: AnalyticsComponent? = null
 
-    override fun init(dependencies: AnalyticsFeatureDependencies) {
+    override fun init(dependencies: LockAppsFeatureDependencies) {
         if (component == null) component = AnalyticsComponent.create(dependencies)
     }
 
-    override fun fetchApi(): LockAppsFeatureApi = fetchComponent()
+    override fun fetchApi(): AnalyticsFeatureApi = fetchComponent()
 
     override fun clear() {
         component = null

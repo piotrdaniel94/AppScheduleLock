@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.presenatiton.mappers
+package ru.piotr.features.lockapps.impl.presenatiton.mappers
 
 import androidx.compose.runtime.Composable
 import ru.piotr.core.utils.functional.TimePeriod
-import ru.piotr.features.analytics.impl.presenatiton.theme.AnalyticsThemeRes
+import ru.piotr.features.lockapps.impl.presenatiton.theme.AnalyticsThemeRes
 
 /**
  * @author Stanislav Aleshin on 22.04.2023.

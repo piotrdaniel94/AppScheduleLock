@@ -17,18 +17,18 @@ package ru.piotr.features.lockapps.impl.di.component
 
 import dagger.Component
 import ru.piotr.core.utils.di.FeatureScope
-import ru.piotr.features.lockapps.api.di.LockAppsFeatureApi
+import ru.piotr.features.lockapps.api.di.AnalyticsFeatureApi
 import ru.piotr.features.lockapps.impl.di.LockAppsFeatureDependencies
-import ru.piotr.features.analytics.impl.di.modules.DomainModule
-import ru.piotr.features.analytics.impl.di.modules.PresentationModule
-import ru.piotr.features.analytics.impl.presenatiton.ui.screenmodel.AnalyticsScreenModel
+import ru.piotr.features.lockapps.impl.di.modules.DomainModule
+import ru.piotr.features.lockapps.impl.di.modules.PresentationModule
+import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.AnalyticsScreenModel
 
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
 @Component(
     modules = [DomainModule::class, PresentationModule::class],
-    dependencies = [AnalyticsFeatureDependencies::class],
+    dependencies = [LockAppsFeatureDependencies::class],
 )
 @FeatureScope
 internal interface AnalyticsComponent : AnalyticsFeatureApi {
@@ -37,12 +37,12 @@ internal interface AnalyticsComponent : AnalyticsFeatureApi {
 
     @Component.Builder
     interface Builder {
-        fun dependencies(deps: AnalyticsFeatureDependencies): Builder
+        fun dependencies(deps: LockAppsFeatureDependencies): Builder
         fun build(): AnalyticsComponent
     }
 
     companion object {
-        fun create(deps: AnalyticsFeatureDependencies): AnalyticsComponent {
+        fun create(deps: LockAppsFeatureDependencies): AnalyticsComponent {
             return DaggerAnalyticsComponent.builder()
                 .dependencies(deps)
                 .build()

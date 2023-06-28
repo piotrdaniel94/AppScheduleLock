@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.presenatiton.ui.views
+package ru.piotr.features.lockapps.impl.presenatiton.ui.views
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
@@ -32,7 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ru.piotr.core.ui.views.toMinutesAndHoursTitle
-import ru.piotr.features.analytics.impl.domain.entities.CategoryAnalytic
+import ru.piotr.features.lockapps.impl.domain.entities.CategoryAnalytic
 import ru.piotr.features.home.api.presentation.mappers.fetchNameByLanguage
 
 @Composable

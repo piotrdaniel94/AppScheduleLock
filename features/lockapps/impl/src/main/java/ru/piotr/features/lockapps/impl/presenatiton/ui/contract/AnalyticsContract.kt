@@ -28,7 +28,7 @@ import ru.piotr.features.lockapps.impl.domain.entities.ScheduleAnalytics
  * @author Stanislav Aleshin on 30.03.2023.
  */
 @Parcelize
-internal data class LockAppsViewState(
+internal data class AnalyticsViewState(
     val timePeriod: TimePeriod? = null,
     val scheduleAnalytics: ScheduleAnalytics? = null,
 ) : BaseViewState

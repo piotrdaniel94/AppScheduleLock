@@ -28,7 +28,7 @@ repositories {
 }
 
 android {
-    namespace = "ru.piotr.features.analytics.impl"
+    namespace = "ru.piotr.features.lockapps.impl"
     compileSdk = Config.compileSdkVersion
 
     defaultConfig {
@@ -78,7 +78,7 @@ dependencies {
     implementation(project(":core:utils"))
     implementation(project(":core:ui"))
     implementation(project(":features:home:api"))
-    implementation(project(":features:analytics:api"))
+    implementation(project(":features:lockapps:api"))
 
     implementation(Dependencies.AndroidX.core)
     implementation(Dependencies.AndroidX.appcompat)

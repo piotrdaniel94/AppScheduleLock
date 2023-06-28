@@ -18,22 +18,22 @@ package ru.piotr.features.lockapps.impl.presenatiton.theme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import ru.piotr.core.ui.theme.TimePlannerRes
-import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LocalLockAppsIcons
-import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LocalLockAppsStrings
-import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.fetchLockAppsIcons
-import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.fetchLockAppsStrings
+import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LocalAnalyticsIcons
+import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.LocalAnalyticsStrings
+import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.fetchAnalyticsIcons
+import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.fetchAnalyticsStrings
 
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
 @Composable
-internal fun LockAppsTheme(content: @Composable () -> Unit) {
-    val strings = fetchLockAppsStrings(TimePlannerRes.language)
-    val icons = fetchLockAppsIcons()
+internal fun AnalyticsTheme(content: @Composable () -> Unit) {
+    val strings = fetchAnalyticsStrings(TimePlannerRes.language)
+    val icons = fetchAnalyticsIcons()
 
     CompositionLocalProvider(
-        LocalLockAppsStrings provides strings,
-        LocalLockAppsIcons provides icons,
+        LocalAnalyticsStrings provides strings,
+        LocalAnalyticsIcons provides icons,
         content = content,
     )
 }

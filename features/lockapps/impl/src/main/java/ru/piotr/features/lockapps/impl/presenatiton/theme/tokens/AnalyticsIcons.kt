@@ -21,7 +21,7 @@ import ru.piotr.features.lockapps.impl.R
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
-internal data class LockAppsIcons(
+internal data class AnalyticsIcons(
     val barChart: Int,
     val pieChart: Int,
     val numberedList: Int,
@@ -30,7 +30,7 @@ internal data class LockAppsIcons(
     val timeComplete: Int,
 )
 
-internal val baseLockAppsIcons = LockAppsIcons(
+internal val baseAnalyticsIcons = AnalyticsIcons(
     barChart = R.drawable.ic_bar_chart,
     pieChart = R.drawable.ic_pie_chart,
     numberedList = R.drawable.ic_list_numbered,
@@ -39,8 +39,8 @@ internal val baseLockAppsIcons = LockAppsIcons(
     timeComplete = R.drawable.ic_time_complete,
 )
 
-internal val LocalLockAppsIcons = staticCompositionLocalOf<LockAppsIcons> {
+internal val LocalAnalyticsIcons = staticCompositionLocalOf<AnalyticsIcons> {
     error("Analytics Icons is not provided")
 }
 
-internal fun fetchLockAppsIcons() = baseLockAppsIcons
+internal fun fetchAnalyticsIcons() = baseAnalyticsIcons

@@ -20,6 +20,7 @@ import ru.piotr.core.utils.navigation.TabRouter
 import ru.piotr.features.analytics.api.navigation.AnalyticsFeatureStarter
 import ru.piotr.features.home.api.navigation.HomeFeatureStarter
 import ru.piotr.features.settings.api.navigation.SettingsFeatureStarter
+import ru.piotr.features.lockapps.api.navigation.LockAppsFeatureStarter
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -40,6 +41,7 @@ interface TabNavigationManager {
         private val homeFeatureStarter: Provider<HomeFeatureStarter>,
         private val analyticsFeatureStarter: Provider<AnalyticsFeatureStarter>,
         private val settingsFeatureStarter: Provider<SettingsFeatureStarter>,
+        private val lockappsFeatureStarter: Provider<LockAppsFeatureStarter>,
         private val router: TabRouter,
     ) : TabNavigationManager {
 
@@ -68,7 +70,7 @@ interface TabNavigationManager {
         )
 
         override fun showLockAppsFeature() = showTab(
-            screen = analyticsFeatureStarter.get().provideMainScreen()
+            screen = lockappsFeatureStarter.get().provideMainScreen()
         )
 
         private fun showTab(screen: Screen) = router.showTab(screen)

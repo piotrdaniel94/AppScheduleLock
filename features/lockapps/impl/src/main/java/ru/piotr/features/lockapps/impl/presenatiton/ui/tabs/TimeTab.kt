@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.presenatiton.ui.tabs
+package ru.piotr.features.lockapps.impl.presenatiton.ui.tabs
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
@@ -45,12 +45,12 @@ import hu.ma.charts.pie.data.PieChartEntry
 import ru.piotr.core.ui.views.toMinutesAndHoursTitle
 import ru.piotr.core.utils.charts.fetchPieColorByTop
 import ru.piotr.core.utils.functional.TimePeriod
-import ru.piotr.features.analytics.impl.domain.entities.CategoriesAnalytics
-import ru.piotr.features.analytics.impl.presenatiton.theme.AnalyticsThemeRes
-import ru.piotr.features.analytics.impl.presenatiton.ui.contract.AnalyticsViewState
-import ru.piotr.features.analytics.impl.presenatiton.ui.views.AnalyticsTimeLegend
-import ru.piotr.features.analytics.impl.presenatiton.ui.views.SubAnalyticsTimeLegend
-import ru.piotr.features.analytics.impl.presenatiton.ui.views.TimeSelectorAndRefresh
+import ru.piotr.features.lockapps.impl.domain.entities.CategoriesAnalytics
+import ru.piotr.features.lockapps.impl.presenatiton.theme.AnalyticsThemeRes
+import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsViewState
+import ru.piotr.features.lockapps.impl.presenatiton.ui.views.AnalyticsTimeLegend
+import ru.piotr.features.lockapps.impl.presenatiton.ui.views.SubAnalyticsTimeLegend
+import ru.piotr.features.lockapps.impl.presenatiton.ui.views.TimeSelectorAndRefresh
 import ru.piotr.features.home.api.presentation.mappers.fetchNameByLanguage
 
 /**

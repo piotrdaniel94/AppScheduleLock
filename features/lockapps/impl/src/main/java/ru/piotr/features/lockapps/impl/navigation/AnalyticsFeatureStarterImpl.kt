@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.navigation
+package ru.piotr.features.lockapps.impl.navigation
 
 import cafe.adriel.voyager.core.screen.Screen
-import ru.piotr.features.analytics.api.navigation.AnalyticsFeatureStarter
+import ru.piotr.features.lockapps.api.navigation.LockAppsFeatureStarter
 import javax.inject.Inject
 
 /**
@@ -24,7 +24,7 @@ import javax.inject.Inject
  */
 internal class AnalyticsFeatureStarterImpl @Inject constructor(
     private val analyticsScreen: Screen,
-) : AnalyticsFeatureStarter {
+) : LockAppsFeatureStarter {
 
     override fun provideMainScreen() = analyticsScreen
 }

@@ -13,20 +13,20 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.di.modules
+package ru.piotr.features.lockapps.impl.di.modules
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import dagger.Binds
 import dagger.Module
 import ru.piotr.core.utils.di.FeatureScope
-import ru.piotr.features.analytics.api.navigation.AnalyticsFeatureStarter
-import ru.piotr.features.analytics.impl.navigation.AnalyticsFeatureStarterImpl
-import ru.piotr.features.analytics.impl.presenatiton.ui.AnalyticsScreen
-import ru.piotr.features.analytics.impl.presenatiton.ui.screenmodel.AnalyticsEffectCommunicator
-import ru.piotr.features.analytics.impl.presenatiton.ui.screenmodel.AnalyticsScreenModel
-import ru.piotr.features.analytics.impl.presenatiton.ui.screenmodel.AnalyticsStateCommunicator
-import ru.piotr.features.analytics.impl.presenatiton.ui.screenmodel.AnalyticsWorkProcessor
+import ru.piotr.features.lockapps.api.navigation.LockAppsFeatureStarter
+import ru.piotr.features.lockapps.impl.navigation.AnalyticsFeatureStarterImpl
+import ru.piotr.features.lockapps.impl.presenatiton.ui.AnalyticsScreen
+import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.AnalyticsEffectCommunicator
+import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.AnalyticsScreenModel
+import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.AnalyticsStateCommunicator
+import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.AnalyticsWorkProcessor
 
 /**
  * @author Stanislav Aleshin on 30.03.2023.
@@ -35,7 +35,7 @@ import ru.piotr.features.analytics.impl.presenatiton.ui.screenmodel.AnalyticsWor
 internal interface PresentationModule {
 
     @Binds
-    fun bindAnalyticsFeatureStarter(starter: AnalyticsFeatureStarterImpl): AnalyticsFeatureStarter
+    fun bindAnalyticsFeatureStarter(starter: AnalyticsFeatureStarterImpl): LockAppsFeatureStarter
 
     @Binds
     @FeatureScope

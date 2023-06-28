@@ -17,8 +17,8 @@ package ru.piotr.features.lockapps.impl.di.modules
 
 import dagger.Binds
 import dagger.Module
-import ru.piotr.features.lockapps.impl.domain.common.LockAppsEitherWrapper
-import ru.piotr.features.lockapps.impl.domain.common.LockAppsErrorHandler
+import ru.piotr.features.lockapps.impl.domain.common.AnalyticsEitherWrapper
+import ru.piotr.features.lockapps.impl.domain.common.AnalyticsErrorHandler
 import ru.piotr.features.lockapps.impl.domain.interactors.AnalyticsInteractor
 
 /**
@@ -28,11 +28,11 @@ import ru.piotr.features.lockapps.impl.domain.interactors.AnalyticsInteractor
 internal interface DomainModule {
 
     @Binds
-    fun bindLockAppsInteractor(interactor: AnalyticsInteractor.Base): AnalyticsInteractor
+    fun bindAnalyticsInteractor(interactor: AnalyticsInteractor.Base): AnalyticsInteractor
 
     @Binds
-    fun bindLockAppsEitherWrapper(wrapper: LockAppsEitherWrapper.Base): LockAppsEitherWrapper
+    fun bindAnalyticsEitherWrapper(wrapper: AnalyticsEitherWrapper.Base): AnalyticsEitherWrapper
 
     @Binds
-    fun bindLockAppsErrorHandler(handler: LockAppsErrorHandler.Base): LockAppsErrorHandler
+    fun bindAnalyticsErrorHandler(handler: AnalyticsErrorHandler.Base): AnalyticsErrorHandler
 }

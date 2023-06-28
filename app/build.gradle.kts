@@ -114,6 +114,8 @@ dependencies {
     implementation(project(":features:analytics:impl"))
     implementation(project(":features:settings:api"))
     implementation(project(":features:settings:impl"))
+    implementation(project(":features:lockapps:api"))
+    implementation(project(":features:lockapps:impl"))
 
     implementation(Dependencies.AndroidX.core)
     implementation(Dependencies.AndroidX.appcompat)

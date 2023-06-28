@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.presenatiton.ui.screenmodel
+package ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel
 
 import ru.piotr.core.utils.platform.communications.state.StateCommunicator
-import ru.piotr.features.analytics.impl.presenatiton.ui.contract.AnalyticsViewState
+import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsViewState
 import javax.inject.Inject
 
 /**

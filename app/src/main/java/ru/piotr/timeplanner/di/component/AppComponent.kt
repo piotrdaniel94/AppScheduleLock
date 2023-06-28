@@ -24,6 +24,7 @@ import ru.piotr.features.analytics.impl.di.AnalyticsFeatureDependencies
 import ru.piotr.features.editor.impl.di.EditorFeatureDependencies
 import ru.piotr.features.home.impl.di.HomeFeatureDependencies
 import ru.piotr.features.settings.impl.di.SettingsFeatureDependencies
+import ru.piotr.features.lockapps.impl.di.LockAppsFeatureDependencies
 import ru.piotr.timeplanner.di.annotation.TabNavigation
 import ru.piotr.timeplanner.di.modules.*
 import ru.piotr.timeplanner.presentation.ui.main.MainActivity
@@ -49,9 +50,10 @@ import javax.inject.Singleton
 )
 interface AppComponent :
     HomeFeatureDependencies,
+    AnalyticsFeatureDependencies,
     SettingsFeatureDependencies,
-    EditorFeatureDependencies,
-    AnalyticsFeatureDependencies {
+    LockAppsFeatureDependencies,
+    EditorFeatureDependencies{
 
     @TabNavigation
     fun fetchTabNavigatorManager(): NavigatorManager

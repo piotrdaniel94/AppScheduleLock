@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.analytics.impl.presenatiton.mappers
+package ru.piotr.features.lockapps.impl.presenatiton.mappers
 
-import ru.piotr.features.analytics.impl.domain.entities.AnalyticsFailure
-import ru.piotr.features.analytics.impl.presenatiton.theme.tokens.AnalyticsStrings
+import ru.piotr.features.lockapps.impl.domain.entities.AnalyticsFailure
+import ru.piotr.features.lockapps.impl.presenatiton.theme.tokens.AnalyticsStrings
 
 /**
  * @author Stanislav Aleshin on 01.05.2023.

@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/features/home/impl" />
             <option value="$PROJECT_DIR$/features/lockapps" />
             <option value="$PROJECT_DIR$/features/lockapps/api" />
+            <option value="$PROJECT_DIR$/features/lockapps/impl" />
             <option value="$PROJECT_DIR$/features/settings" />
             <option value="$PROJECT_DIR$/features/settings/api" />
             <option value="$PROJECT_DIR$/features/settings/impl" />

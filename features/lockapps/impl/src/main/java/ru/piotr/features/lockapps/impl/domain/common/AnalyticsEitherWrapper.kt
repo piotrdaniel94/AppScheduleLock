@@ -13,15 +13,17 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.lockapps.impl.domain.entities
+package ru.piotr.features.lockapps.impl.domain.common
 
-import kotlinx.parcelize.Parcelize
-import ru.piotr.core.utils.functional.DomainFailures
+import ru.piotr.core.utils.wrappers.EitherWrapper
+import ru.piotr.features.lockapps.impl.domain.entities.AnalyticsFailure
+import javax.inject.Inject
 
 /**
  * @author Stanislav Aleshin on 22.04.2023.
  */
-@Parcelize
-internal sealed class LockAppsFailure : DomainFailures {
-    data class OtherError(val throwable: Throwable) : AnalyticsFailure()
+internal interface AnalyticsEitherWrapper : EitherWrapper<AnalyticsFailure> {
+
+    class Base @Inject constructor(errorHandler: AnalyticsErrorHandler) : AnalyticsEitherWrapper,
+        EitherWrapper.Abstract<AnalyticsFailure>(errorHandler = errorHandler)
 }

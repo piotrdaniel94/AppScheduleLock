@@ -5,6 +5,6 @@ import cafe.adriel.voyager.core.screen.Screen
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
-interface LockAppsFeaturetarter {
+interface LockAppsFeatureStarter {
     fun provideMainScreen(): Screen
 }
