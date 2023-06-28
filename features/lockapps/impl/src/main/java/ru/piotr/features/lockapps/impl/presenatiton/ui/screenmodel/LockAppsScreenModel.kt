@@ -22,7 +22,7 @@ import ru.piotr.core.utils.functional.TimePeriod
 import ru.piotr.core.utils.managers.CoroutineManager
 import ru.piotr.core.utils.platform.screenmodel.BaseScreenModel
 import ru.piotr.core.utils.platform.screenmodel.work.WorkScope
-import ru.piotr.features.lockapps.impl.di.holder.AnalyticsComponentHolder
+import ru.piotr.features.lockapps.impl.di.holder.LockAppsComponentHolder
 import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsAction
 import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsEffect
 import ru.piotr.features.lockapps.impl.presenatiton.ui.contract.AnalyticsEvent
@@ -85,12 +85,12 @@ internal class LockAppsScreenModel @Inject constructor(
 
     override fun onDispose() {
         super.onDispose()
-        AnalyticsComponentHolder.clear()
+        LockAppsComponentHolder.clear()
     }
 }
 
 @Composable
 internal fun Screen.rememberAnalyticsScreenModel(): LockAppsScreenModel {
-    val component = AnalyticsComponentHolder.fetchComponent()
+    val component = LockAppsComponentHolder.fetchComponent()
     return rememberScreenModel { component.fetchAnalyticsScreenModel() }
 }

@@ -20,6 +20,7 @@ import dagger.Module
 import ru.piotr.features.analytics.impl.di.AnalyticsFeatureDependencies
 import ru.piotr.features.editor.impl.di.EditorFeatureDependencies
 import ru.piotr.features.home.impl.di.HomeFeatureDependencies
+import ru.piotr.features.lockapps.impl.di.LockAppsFeatureDependencies
 import ru.piotr.features.settings.impl.di.SettingsFeatureDependencies
 import ru.piotr.timeplanner.di.component.AppComponent
 
@@ -40,4 +41,7 @@ interface DependenciesModule {
 
     @Binds
     fun bindSettingsFeatureDependencies(component: AppComponent): SettingsFeatureDependencies
+
+    @Binds
+    fun bindLockAppsFeatureDependencies(component: AppComponent): LockAppsFeatureDependencies
 }

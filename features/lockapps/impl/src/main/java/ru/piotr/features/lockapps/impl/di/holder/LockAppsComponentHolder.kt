@@ -23,7 +23,7 @@ import ru.piotr.module_injector.BaseComponentHolder
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
-object AnalyticsComponentHolder : BaseComponentHolder<LockAppsFeatureApi, LockAppsFeatureDependencies> {
+object LockAppsComponentHolder : BaseComponentHolder<LockAppsFeatureApi, LockAppsFeatureDependencies> {
 
     private var component: LockAppsComponent? = null
 

@@ -43,7 +43,7 @@ internal interface LockAppsComponent : LockAppsFeatureApi {
 
     companion object {
         fun create(deps: LockAppsFeatureDependencies): LockAppsComponent {
-            return DaggerAnalyticsComponent.builder()
+            return DaggerLockAppsComponent.builder()
                 .dependencies(deps)
                 .build()
         }

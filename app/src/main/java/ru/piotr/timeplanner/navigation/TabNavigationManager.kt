@@ -70,7 +70,7 @@ interface TabNavigationManager {
         )
 
         override fun showLockAppsFeature() = showTab(
-            screen = lockappsFeatureStarter.get().provideMainScreen()
+            screen = lockappsFeatureStarter.get().provideMainScreen(),
         )
 
         private fun showTab(screen: Screen) = router.showTab(screen)

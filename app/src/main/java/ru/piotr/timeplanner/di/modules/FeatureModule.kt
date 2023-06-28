@@ -23,6 +23,8 @@ import ru.piotr.features.editor.impl.di.EditorFeatureDependencies
 import ru.piotr.features.editor.impl.di.holder.EditorComponentHolder
 import ru.piotr.features.home.impl.di.HomeFeatureDependencies
 import ru.piotr.features.home.impl.di.holder.HomeComponentHolder
+import ru.piotr.features.lockapps.impl.di.LockAppsFeatureDependencies
+import ru.piotr.features.lockapps.impl.di.holder.LockAppsComponentHolder
 import ru.piotr.features.settings.impl.di.SettingsFeatureDependencies
 import ru.piotr.features.settings.impl.di.holder.SettingsComponentHolder
 //import ru.piotr.features.lockapps.impl.di.LockAppsFeatureDependecies
@@ -67,11 +69,11 @@ class FeatureModule {
         fetchApi().fetchStarter()
     }
 
-//    @Provides
-//    fun provideLockAppsFeatureStarter(
-//        dependencies: LockAppsFeatureDependencies,
-//    ) = with(SettingsComponentHolder) {
-//        init(dependencies)
-//        fetchApi().fetchStarter()
-//    }
+    @Provides
+    fun provideLockAppsFeatureStarter(
+        dependencies: LockAppsFeatureDependencies,
+    ) = with(LockAppsComponentHolder) {
+        init(dependencies)
+        fetchApi().fetchStarter()
+    }
 }
