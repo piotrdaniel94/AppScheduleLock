@@ -24,7 +24,7 @@ import ru.piotr.features.lockapps.api.navigation.LockAppsFeatureStarter
 import ru.piotr.features.lockapps.impl.navigation.AnalyticsFeatureStarterImpl
 import ru.piotr.features.lockapps.impl.presenatiton.ui.AnalyticsScreen
 import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.AnalyticsEffectCommunicator
-import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.AnalyticsScreenModel
+import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.LockAppsScreenModel
 import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.AnalyticsStateCommunicator
 import ru.piotr.features.lockapps.impl.presenatiton.ui.screenmodel.AnalyticsWorkProcessor
 
@@ -42,7 +42,7 @@ internal interface PresentationModule {
     fun bindAnalyticsScreen(screen: AnalyticsScreen): Screen
 
     @Binds
-    fun bindAnalyticsScreenModel(screenModel: AnalyticsScreenModel): ScreenModel
+    fun bindAnalyticsScreenModel(screenModel: LockAppsScreenModel): ScreenModel
 
     @Binds
     fun bindAnalyticsWorkProcessor(workProcessor: AnalyticsWorkProcessor.Base): AnalyticsWorkProcessor

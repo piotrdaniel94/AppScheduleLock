@@ -6,6 +6,6 @@ import ru.piotr.module_injector.BaseFeatureApi
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
-interface AnalyticsFeatureApi : BaseFeatureApi {
+interface LockAppsFeatureApi : BaseFeatureApi {
     fun fetchStarter(): LockAppsFeatureStarter
 }

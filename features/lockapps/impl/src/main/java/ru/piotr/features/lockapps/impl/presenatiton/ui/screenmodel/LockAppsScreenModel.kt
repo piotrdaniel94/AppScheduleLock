@@ -32,7 +32,7 @@ import javax.inject.Inject
 /**
  * @author Stanislav Aleshin on 30.03.2023.
  */
-internal class AnalyticsScreenModel @Inject constructor(
+internal class LockAppsScreenModel @Inject constructor(
     private val analyticsWorkProcessor: AnalyticsWorkProcessor,
     stateCommunicator: AnalyticsStateCommunicator,
     effectCommunicator: AnalyticsEffectCommunicator,
@@ -90,7 +90,7 @@ internal class AnalyticsScreenModel @Inject constructor(
 }
 
 @Composable
-internal fun Screen.rememberAnalyticsScreenModel(): AnalyticsScreenModel {
+internal fun Screen.rememberAnalyticsScreenModel(): LockAppsScreenModel {
     val component = AnalyticsComponentHolder.fetchComponent()
     return rememberScreenModel { component.fetchAnalyticsScreenModel() }
 }
