@@ -47,9 +47,11 @@ enum class TabsBottomBarItems : BottomBarItem {
         override val enabledIcon: Int @Composable get() = TimePlannerRes.icons.enabledHomeIcon
         override val disabledIcon: Int @Composable get() = TimePlannerRes.icons.disabledHomeIcon
     },
-//    LOCKLIST {
-//        override val label: String @Composable get() = TimePlannerRes.strings.
-//    },
+    LOCKAPPSLIST {
+        override val label: String @Composable get() = TimePlannerRes.strings.lockAppTabTitle
+        override val enabledIcon: Int @Composable get() = TimePlannerRes.icons.enabledLockAppsIcon
+        override val disabledIcon: Int @Composable get() = TimePlannerRes.icons.disabledLockAppsIcon
+    },
     ANALYTICS {
         override val label: String @Composable get() = TimePlannerRes.strings.analyticsTabTitle
         override val enabledIcon: Int @Composable get() = TimePlannerRes.icons.enabledAnalyticsIcon

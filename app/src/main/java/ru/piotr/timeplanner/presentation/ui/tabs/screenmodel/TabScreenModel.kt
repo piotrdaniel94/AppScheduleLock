@@ -57,6 +57,7 @@ class TabScreenModel @Inject constructor(
         TabsEvent.SelectedCategoriesScreen -> navigate(TabsBottomBarItems.HOME) { showCategoriesScreen() }
         TabsEvent.SelectedAnalyticsTab -> navigate(TabsBottomBarItems.ANALYTICS) { showAnalyticsFeature() }
         TabsEvent.SelectedSettingsTab -> navigate(TabsBottomBarItems.SETTINGS) { showSettingsFeature() }
+        TabsEvent.SelectedLockAppsTab -> navigate(TabsBottomBarItems.LOCKAPPSLIST) { showLockAppsFeature() }
     }
 
     override suspend fun reduce(

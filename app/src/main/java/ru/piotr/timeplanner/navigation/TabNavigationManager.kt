@@ -34,6 +34,7 @@ interface TabNavigationManager {
     fun showCategoriesScreen()
     fun showAnalyticsFeature()
     fun showSettingsFeature()
+    fun showLockAppsFeature()
 
     class Base @Inject constructor(
         private val homeFeatureStarter: Provider<HomeFeatureStarter>,
@@ -64,6 +65,10 @@ interface TabNavigationManager {
 
         override fun showSettingsFeature() = showTab(
             screen = settingsFeatureStarter.get().provideMainScreen(),
+        )
+
+        override fun showLockAppsFeature() = showTab(
+            screen = analyticsFeatureStarter.get().provideMainScreen()
         )
 
         private fun showTab(screen: Screen) = router.showTab(screen)

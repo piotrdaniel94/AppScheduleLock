@@ -34,6 +34,7 @@ sealed class TabsEvent : BaseEvent {
     object SelectedCategoriesScreen : TabsEvent()
     object SelectedAnalyticsTab : TabsEvent()
     object SelectedSettingsTab : TabsEvent()
+    object SelectedLockAppsTab : TabsEvent()
 }
 
 sealed class TabsEffect : EmptyUiEffect

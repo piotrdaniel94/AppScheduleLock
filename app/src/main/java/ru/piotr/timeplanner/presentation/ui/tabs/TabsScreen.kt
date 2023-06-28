@@ -78,6 +78,7 @@ class TabsScreen : Screen {
                                     TabsBottomBarItems.HOME -> TabsEvent.SelectedHomeTab
                                     TabsBottomBarItems.ANALYTICS -> TabsEvent.SelectedAnalyticsTab
                                     TabsBottomBarItems.SETTINGS -> TabsEvent.SelectedSettingsTab
+                                    TabsBottomBarItems.LOCKAPPSLIST -> TabsEvent.SelectedLockAppsTab
                                 }
                                 dispatchEvent(event)
                             },
