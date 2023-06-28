@@ -26,7 +26,7 @@ repositories {
 }
 
 android {
-    namespace = "ru.aleshin.features.settings.api"
+    namespace = "ru.piotr.features.settings.api"
     compileSdk = Config.compileSdkVersion
 
     defaultConfig {
@@ -79,8 +79,4 @@ dependencies {
     implementation(Dependencies.Room.core)
     implementation(Dependencies.Room.ktx)
     kapt(Dependencies.Room.kapt)
-
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.Test.jUnitExt)
-    androidTestImplementation(Dependencies.Test.espresso)
 }

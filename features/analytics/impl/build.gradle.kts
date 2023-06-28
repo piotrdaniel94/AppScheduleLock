@@ -28,7 +28,7 @@ repositories {
 }
 
 android {
-    namespace = "ru.aleshin.features.analytics.impl"
+    namespace = "ru.piotr.features.analytics.impl"
     compileSdk = Config.compileSdkVersion
 
     defaultConfig {
@@ -100,11 +100,6 @@ dependencies {
     implementation(Dependencies.Voyager.navigator)
     implementation(Dependencies.Voyager.screenModel)
 
-    testImplementation(Dependencies.Test.jUnit)
-    testImplementation(Dependencies.Test.turbine)
-    androidTestImplementation(Dependencies.Test.jUnitExt)
-    androidTestImplementation(Dependencies.Test.espresso)
-    androidTestImplementation(Dependencies.Test.composeJUnit)
     debugImplementation(Dependencies.Compose.uiTooling)
     debugImplementation(Dependencies.Compose.uiTestManifest)
 }

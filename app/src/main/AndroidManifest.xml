@@ -50,7 +50,7 @@
             android:exported="true">
 
             <intent-filter>
-                <action android:name="ru.aleshin.ALARM_NOTIFICATION_ACTION"/>
+                <action android:name="ru.piotr.ALARM_NOTIFICATION_ACTION"/>
             </intent-filter>
         </receiver>
 

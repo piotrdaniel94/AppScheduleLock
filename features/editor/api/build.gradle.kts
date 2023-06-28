@@ -25,7 +25,7 @@ repositories {
 }
 
 android {
-    namespace = "ru.aleshin.editor.home.api"
+    namespace = "ru.piotr.editor.home.api"
     compileSdk = Config.compileSdkVersion
 
     defaultConfig {
@@ -76,7 +76,4 @@ dependencies {
 
     implementation(Dependencies.Dagger.core)
 
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.Test.jUnitExt)
-    androidTestImplementation(Dependencies.Test.espresso)
 }

@@ -10,7 +10,7 @@ repositories {
 }
 
 android {
-    namespace = "ru.aleshin.features.analytics.api"
+    namespace = "ru.piotr.features.analytics.api"
     compileSdk = Config.compileSdkVersion
 
     defaultConfig {
@@ -57,8 +57,4 @@ dependencies {
     implementation(Dependencies.AndroidX.core)
     implementation(Dependencies.AndroidX.appcompat)
     implementation(Dependencies.AndroidX.material)
-
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.Test.jUnitExt)
-    androidTestImplementation(Dependencies.Test.espresso)
 }

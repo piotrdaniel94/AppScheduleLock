@@ -11,7 +11,7 @@ repositories {
 }
 
 android {
-    namespace = "ru.aleshin.core.database"
+    namespace = "ru.piotr.core.database"
     compileSdk = Config.compileSdkVersion
 
     defaultConfig {
@@ -56,7 +56,4 @@ dependencies {
     implementation(Dependencies.Room.ktx)
     kapt(Dependencies.Room.kapt)
 
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.Test.jUnitExt)
-    androidTestImplementation(Dependencies.Test.espresso)
 }

@@ -27,7 +27,7 @@ repositories {
 }
 
 android {
-    namespace = "ru.aleshin.core.ui"
+    namespace = "ru.piotr.core.ui"
     compileSdk = Config.compileSdkVersion
 
     defaultConfig {
@@ -86,10 +86,6 @@ dependencies {
     implementation(Dependencies.Dagger.core)
     kapt(Dependencies.Dagger.kapt)
 
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.Test.jUnitExt)
-    androidTestImplementation(Dependencies.Test.espresso)
-    androidTestImplementation(Dependencies.Test.composeJUnit)
     debugImplementation(Dependencies.Compose.uiTooling)
     debugImplementation(Dependencies.Compose.uiTestManifest)
 }

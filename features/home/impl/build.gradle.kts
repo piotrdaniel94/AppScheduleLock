@@ -27,7 +27,7 @@ repositories {
 }
 
 android {
-    namespace = "ru.aleshin.features.home.impl"
+    namespace = "ru.piotr.features.home.impl"
     compileSdk = Config.compileSdkVersion
 
     defaultConfig {
@@ -96,11 +96,6 @@ dependencies {
     implementation(Dependencies.Voyager.screenModel)
     implementation(Dependencies.Voyager.transitions)
 
-    testImplementation(Dependencies.Test.jUnit)
-    testImplementation(Dependencies.Test.turbine)
-    androidTestImplementation(Dependencies.Test.jUnitExt)
-    androidTestImplementation(Dependencies.Test.espresso)
-    androidTestImplementation(Dependencies.Test.composeJUnit)
     debugImplementation(Dependencies.Compose.uiTooling)
     debugImplementation(Dependencies.Compose.uiTestManifest)
 }

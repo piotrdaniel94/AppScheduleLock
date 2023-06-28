@@ -18,7 +18,7 @@
  * @author Stanislav Aleshin on 14.02.2023.
  */
 object Config {
-    const val applicationId = "ru.aleshin.timeplanner"
+    const val applicationId = "ru.piotr.timeplanner"
 
     const val compileSdkVersion = 33
     const val targetSdkVersion = 33

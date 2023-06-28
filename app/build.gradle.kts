@@ -134,10 +134,6 @@ dependencies {
     implementation(Dependencies.Voyager.screenModel)
     implementation(Dependencies.Voyager.transitions)
 
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.Test.jUnitExt)
-    androidTestImplementation(Dependencies.Test.espresso)
-    androidTestImplementation(Dependencies.Test.composeJUnit)
     debugImplementation(Dependencies.Compose.uiTooling)
     debugImplementation(Dependencies.Compose.uiTestManifest)
 

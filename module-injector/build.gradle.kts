@@ -9,7 +9,7 @@ repositories {
 }
 
 android {
-    namespace = "ru.aleshin.module_injector"
+    namespace = "ru.piotr.module_injector"
     compileSdk = Config.compileSdkVersion
 
     defaultConfig {
@@ -41,7 +41,4 @@ android {
 
 dependencies {
     implementation(Dependencies.AndroidX.core)
-    testImplementation(Dependencies.Test.jUnit)
-    androidTestImplementation(Dependencies.Test.jUnitExt)
-    androidTestImplementation(Dependencies.Test.espresso)
 }

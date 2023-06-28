@@ -14,7 +14,7 @@ Support:
 UI - Material Design 3
 
 ## Download
-<a href="https://apt.izzysoft.de/fdroid/index/apk/ru.aleshin.timeplanner" target="_blank">
+<a href="https://apt.izzysoft.de/fdroid/index/apk/ru.piotr.timeplanner" target="_blank">
 <img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" height="80"/></a>
 
 ## Screenshots
