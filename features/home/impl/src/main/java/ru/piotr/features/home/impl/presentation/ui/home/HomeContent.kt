@@ -97,19 +97,19 @@ internal fun HomeContent(
                                     nextItem != null &&
                                     timeTask.endTime.isNotZeroDifference(nextItem.startTime),
                             )
-                            if (nextItem != null && timeTask.endTime.isNotZeroDifference(nextItem.startTime) && !isCompactView) {
-                                val trackColor = when (timeTask.executionStatus) {
-                                    TimeTaskStatus.PLANNED -> MaterialTheme.colorScheme.surfaceOne()
-                                    TimeTaskStatus.RUNNING -> MaterialTheme.colorScheme.primaryContainer
-                                    TimeTaskStatus.COMPLETED -> MaterialTheme.colorScheme.tertiaryContainer
-                                }
-                                AddTimeTaskViewItem(
-                                    onAddTimeTask = { onTimeTaskAdd.invoke(timeTask.endTime, nextItem.startTime) },
-                                    startTime = timeTask.endTime,
-                                    endTime = nextItem.startTime,
-                                    indicatorColor = trackColor,
-                                )
-                            }
+//                            if (nextItem != null && timeTask.endTime.isNotZeroDifference(nextItem.startTime) && !isCompactView) {
+//                                val trackColor = when (timeTask.executionStatus) {
+//                                    TimeTaskStatus.PLANNED -> MaterialTheme.colorScheme.surfaceOne()
+//                                    TimeTaskStatus.RUNNING -> MaterialTheme.colorScheme.primaryContainer
+//                                    TimeTaskStatus.COMPLETED -> MaterialTheme.colorScheme.tertiaryContainer
+//                                }
+//                                AddTimeTaskViewItem(
+//                                    onAddTimeTask = { onTimeTaskAdd.invoke(timeTask.endTime, nextItem.startTime) },
+//                                    startTime = timeTask.endTime,
+//                                    endTime = nextItem.startTime,
+//                                    indicatorColor = trackColor,
+//                                )
+//                            }
                         }
                         item {
                             val startTime = when (state.timeTasks.isEmpty()) {

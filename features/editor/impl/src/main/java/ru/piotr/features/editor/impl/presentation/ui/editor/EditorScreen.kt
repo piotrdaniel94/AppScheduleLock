@@ -76,8 +76,8 @@ internal class EditorScreen @Inject constructor() : Screen {
                         onBackIconClick = { dispatchEvent(EditorEvent.PressBackButton) },
                         onDeleteActionClick = { dispatchEvent(EditorEvent.PressDeleteButton) },
                         onTemplatesActionClick = {
-                            dispatchEvent(EditorEvent.LoadTemplates)
-                            isTemplatesSheetOpen = true
+//                            dispatchEvent(EditorEvent.LoadTemplates)
+//                            isTemplatesSheetOpen = true
                         },
                     )
                 },
