@@ -38,6 +38,9 @@ import ru.piotr.core.ui.views.CategoryIconMonogram
 import ru.piotr.core.ui.views.CategoryTextMonogram
 import ru.piotr.core.ui.views.ExpandedIcon
 import ru.piotr.features.home.impl.presentation.theme.HomeThemeRes
+import ru.piotr.features.home.impl.presentation.ui.home.contract.HomeEvent
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * @author Stanislav Aleshin on 22.02.2023.
@@ -324,6 +327,107 @@ internal fun AddTimeTaskView(
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+        }
+    }
+}
+
+@Composable
+internal fun LockingAppTask(
+    modifier: Modifier = Modifier,
+    onMoreButtonClick: () -> Unit,
+    startTime: Date?,
+    endTime: Date?,
+    taskTitle: String,
+    taskSubTitle: String?,
+    categoryIcon: Painter?,
+    categoryIconDescription: String?,
+    isImportant: Boolean,
+) {
+    var expanded by rememberSaveable { mutableStateOf(false) }
+    Surface(
+        onClick = { expanded = !expanded },
+        modifier = modifier,
+        shape = MaterialTheme.shapes.medium,
+        color = MaterialTheme.colorScheme.primaryContainer,
+    ) {
+        Column(modifier = Modifier.animateContentSize()) {
+            Row(
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 8.dp, top = 16.dp, bottom = 16.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                Box(modifier = Modifier.align(Alignment.Top)) {
+                    if (categoryIcon != null) {
+                        CategoryIconMonogram(
+                            icon = categoryIcon,
+                            iconDescription = categoryIconDescription,
+                            iconColor = MaterialTheme.colorScheme.onPrimary,
+                            badgeEnabled = isImportant,
+                            backgroundColor = MaterialTheme.colorScheme.primary,
+                        )
+                    } else {
+                        CategoryTextMonogram(
+                            text = taskTitle.first().toString(),
+                            textColor = MaterialTheme.colorScheme.onPrimary,
+                            backgroundColor = MaterialTheme.colorScheme.primary,
+                            badgeEnabled = isImportant,
+                        )
+                    }
+                }
+                TimeTaskTitles(
+                    modifier = Modifier.weight(1f),
+                    title = taskTitle,
+                    titleColor = MaterialTheme.colorScheme.onSurface,
+                    subTitle = taskSubTitle,
+                )
+                Box(
+                    modifier = Modifier.size(36.dp).animateContentSize(),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    ExpandedIcon(
+                        isExpanded = expanded,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        description = categoryIconDescription,
+                    )
+                }
+            }
+            if (expanded) {
+                Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+                    Divider(modifier = Modifier.fillMaxWidth())
+                }
+                Row(
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    val timeFormat = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT)
+                    TextButton(onClick = {}) {
+                        val startTimeFormat = timeFormat.format(startTime)
+                        Text(
+                            text = startTimeFormat.toString(),
+                            color = MaterialTheme.colorScheme.primary,
+                            style = MaterialTheme.typography.titleSmall,
+                        )
+                    }
+
+                    TextButton(onClick = {}) {
+                        val endTimeFormat = timeFormat.format(endTime)
+                        Text(
+                            text = endTimeFormat.toString(),
+                            color = MaterialTheme.colorScheme.primary,
+                            style = MaterialTheme.typography.titleSmall,
+                        )
+                    }
+                    Spacer(modifier = Modifier.weight(1f))
+                    IconButton(modifier = Modifier.size(36.dp), onClick = onMoreButtonClick) {
+                        Icon(
+                            painter = painterResource(HomeThemeRes.icons.more),
+                            contentDescription = HomeThemeRes.strings.timeTaskMoreIconDesc,
+                        )
+                    }
+                }
+            }
         }
     }
 }

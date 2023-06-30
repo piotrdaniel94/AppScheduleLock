@@ -100,6 +100,17 @@ internal class HomeScreenModel @Inject constructor(
                     scheduleWorkProcessor.loadScheduleByDate(checkNotNull(state().currentDate)).collectAndHandleWork()
                 }
             }
+            is HomeEvent.onChangeStartTime -> {
+//                val command = NavigationWorkCommand.NavigateToEditor(
+//                    currentDate = checkNotNull(state().currentDate),
+//                    startTime = event.changeStartTime,
+//                    endTime = endTime,
+//                )
+//                navigationWorkProcessor.work(command).handleWork()
+            }
+            is HomeEvent.onChangeEndTime -> {
+//                val
+            }
         }
     }
 

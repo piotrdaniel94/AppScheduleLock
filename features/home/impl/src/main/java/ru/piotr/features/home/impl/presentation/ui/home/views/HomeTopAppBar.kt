@@ -43,18 +43,18 @@ internal fun HomeTopAppBar(
             )
         },
         navigationIcon = {
-            TopAppBarButton(
-                imageVector = Icons.Default.Menu,
-                imageDescription = HomeThemeRes.strings.topAppBarMenuIconDesc,
-                onButtonClick = onMenuIconClick,
-            )
+//            TopAppBarButton(
+//                imageVector = Icons.Default.Menu,
+//                imageDescription = HomeThemeRes.strings.topAppBarMenuIconDesc,
+//                onButtonClick = onMenuIconClick,
+//            )
         },
         actions = {
-            TopAppBarButton(
-                imagePainter = painterResource(HomeThemeRes.icons.calendar),
-                imageDescription = HomeThemeRes.strings.topAppBarCalendarIconDesc,
-                onButtonClick = onCalendarIconClick,
-            )
+//            TopAppBarButton(
+//                imagePainter = painterResource(HomeThemeRes.icons.calendar),
+//                imageDescription = HomeThemeRes.strings.topAppBarCalendarIconDesc,
+//                onButtonClick = onCalendarIconClick,
+//            )
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.background,

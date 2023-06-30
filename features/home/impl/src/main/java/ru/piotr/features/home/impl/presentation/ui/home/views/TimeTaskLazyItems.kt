@@ -62,7 +62,7 @@ internal fun LazyItemScope.PlannedTimeTaskItem(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            StartTaskTimeTitle(time = model.startTime)
+//            StartTaskTimeTitle(time = model.startTime)
             LinearProgressIndicator(
                 progress = 0f,
                 modifier = Modifier.fillMaxWidth().clip(MaterialTheme.shapes.small),
@@ -70,11 +70,11 @@ internal fun LazyItemScope.PlannedTimeTaskItem(
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             with(model) {
-                EndTaskTimeTitle(
-                    modifier = modifier.align(Alignment.Bottom),
-                    time = model.endTime,
-                    isVisible = isCompactView,
-                )
+//                EndTaskTimeTitle(
+//                    modifier = modifier.align(Alignment.Bottom),
+//                    time = model.endTime,
+//                    isVisible = isCompactView,
+//                )
                 PlannedTimeTask(
                     modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp).animateContentSize(),
                     onViewClicked = { onItemClick.invoke(key) },
@@ -193,6 +193,59 @@ internal fun LazyItemScope.RunningTimeTaskItem(
 }
 
 @Composable
+internal fun LazyItemScope.RunningLockTaskItem(
+    modifier: Modifier = Modifier,
+    model: TimeTaskUi,
+    onMoreButtonClick: (Long) -> Unit,
+    onChangeStartTime: (Date) -> Unit,
+    onChangeEndTime: (Date) -> Unit,
+    isCompactView: Boolean = true,
+) {
+    Column(
+        modifier = modifier.fillMaxHeight().padding(top = 4.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+//            StartTaskTimeTitle(time = model.startTime)
+            Box(modifier = Modifier.padding(vertical = 8.dp).weight(1f)) {
+                LinearProgressIndicator(
+                    progress = model.progress,
+                    modifier = Modifier.clip(MaterialTheme.shapes.small).fillMaxWidth().animateContentSize(),
+                )
+            }
+//            Text(
+//                text = model.leftTime.toMinutesOrHoursTitle(),
+//                color = MaterialTheme.colorScheme.primary,
+//            )
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            with(model) {
+//                EndTaskTimeTitle(
+//                    modifier = modifier.align(Alignment.Bottom),
+//                    time = model.endTime,
+//                    isVisible = isCompactView,
+//                )
+                LockingAppTask(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp).animateContentSize(),
+                    onMoreButtonClick = { onMoreButtonClick.invoke(key) },
+                    startTime = model.startTime,
+                    endTime = model.endTime,
+                    taskTitle = mainCategory.fetchNameByLanguage(),
+                    taskSubTitle = subCategory?.name,
+                    categoryIcon = mainCategory.icon?.toIconPainter(),
+                    categoryIconDescription = mainCategory.icon?.toDescription(),
+                    isImportant = isImportant,
+                )
+            }
+        }
+    }
+}
+
+@Composable
 internal fun LazyItemScope.AddTimeTaskViewItem(
     modifier: Modifier = Modifier,
     onAddTimeTask: () -> Unit,
@@ -201,7 +254,7 @@ internal fun LazyItemScope.AddTimeTaskViewItem(
     indicatorColor: Color = MaterialTheme.colorScheme.surfaceVariant,
 ) {
     Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        StartTaskTimeTitle(time = startTime)
+//        StartTaskTimeTitle(time = startTime)
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Row(
                 modifier = Modifier.fillMaxWidth(),

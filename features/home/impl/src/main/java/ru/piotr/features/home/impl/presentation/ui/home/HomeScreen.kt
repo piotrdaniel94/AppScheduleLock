@@ -65,8 +65,8 @@ internal class HomeScreen : Screen {
                     onDoneChange = { dispatchEvent(HomeEvent.PressChangeDoneStateButton(it)) },
                     onTimeTaskAdd = { start, end -> dispatchEvent(HomeEvent.PressAddTimeTaskButton(start, end)) },
                     onCreateSchedule = { dispatchEvent(HomeEvent.CreateSchedule) },
-                    onTimeTaskIncrease = { dispatchEvent(HomeEvent.TimeTaskShiftUp(it)) },
-                    onTimeTaskReduce = { dispatchEvent(HomeEvent.TimeTaskShiftDown(it)) },
+                    onChangeStartTime = { date -> dispatchEvent(HomeEvent.onChangeStartTime(date)) },
+                    onChangeEndTime = {date -> dispatchEvent(HomeEvent.onChangeEndTime(date)) },
                     onChangeToggleStatus = { dispatchEvent(HomeEvent.PressViewToggleButton(it)) },
                 )
             },

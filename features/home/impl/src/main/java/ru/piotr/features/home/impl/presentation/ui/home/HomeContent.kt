@@ -41,6 +41,7 @@ import ru.piotr.features.home.impl.presentation.ui.home.views.CompletedTimeTaskI
 import ru.piotr.features.home.impl.presentation.ui.home.views.DateChooser
 import ru.piotr.features.home.impl.presentation.ui.home.views.PlannedTimeTaskItem
 import ru.piotr.features.home.impl.presentation.ui.home.views.TimeTaskPlaceHolderItem
+import ru.piotr.features.home.impl.presentation.ui.home.views.RunningTimeTaskItem
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -56,20 +57,20 @@ internal fun HomeContent(
     onTimeTaskEdit: (TimeTaskUi) -> Unit,
     onDoneChange: (TimeTaskUi) -> Unit,
     onTimeTaskAdd: (startTime: Date, endTime: Date) -> Unit,
-    onTimeTaskIncrease: (TimeTaskUi) -> Unit,
-    onTimeTaskReduce: (TimeTaskUi) -> Unit,
+    onChangeStartTime: (Date) -> Unit,
+    onChangeEndTime: (Date) -> Unit,
     onChangeToggleStatus: (ViewToggleStatus) -> Unit,
 ) {
     val listState = rememberLazyListState()
     Column(modifier = modifier.fillMaxSize()) {
         HorizontalProgressBar(isLoading = state.isLoadingContent)
-        HomeFiltersHeader(
-            isEnabled = !state.isLoadingContent,
-            currentDate = state.currentDate,
-            toggleState = state.timeTaskViewStatus,
-            onChangeDate = onChangeDate,
-            onChangeToggleStatus = onChangeToggleStatus,
-        )
+//        HomeFiltersHeader(
+//            isEnabled = !state.isLoadingContent,
+//            currentDate = state.currentDate,
+//            toggleState = state.timeTaskViewStatus,
+//            onChangeDate = onChangeDate,
+//            onChangeToggleStatus = onChangeToggleStatus,
+//        )
         Box(modifier = Modifier.fillMaxSize()) {
             if (state.dateStatus != null) {
                 LazyColumn(
@@ -89,8 +90,8 @@ internal fun HomeContent(
                             TimeTaskViewItem(
                                 timeTask = timeTask,
                                 onTimeTaskEdit = onTimeTaskEdit,
-                                onTimeTaskIncrease = onTimeTaskIncrease,
-                                onTimeTaskReduce = onTimeTaskReduce,
+                                onChangeStartTime = onChangeStartTime,
+                                onChangeEndTime = onChangeEndTime,
                                 onDoneChange = onDoneChange,
                                 isCompactView = isCompactView &&
                                     nextItem != null &&
@@ -229,40 +230,50 @@ internal fun LazyItemScope.TimeTaskViewItem(
     modifier: Modifier = Modifier,
     timeTask: TimeTaskUi,
     onTimeTaskEdit: (TimeTaskUi) -> Unit,
-    onTimeTaskIncrease: (TimeTaskUi) -> Unit,
-    onTimeTaskReduce: (TimeTaskUi) -> Unit,
+    onChangeStartTime: (Date) -> Unit,
+    onChangeEndTime: (Date) -> Unit,
     onDoneChange: (TimeTaskUi) -> Unit,
     isCompactView: Boolean,
 ) {
-    when (timeTask.executionStatus) {
-        TimeTaskStatus.PLANNED -> {
-            PlannedTimeTaskItem(
-                modifier = modifier,
-                model = timeTask,
-                onItemClick = { onTimeTaskEdit.invoke(timeTask) },
-                isCompactView = isCompactView,
-            )
-        }
-        TimeTaskStatus.RUNNING -> {
-            RunningTimeTaskItem(
-                modifier = modifier,
-                model = timeTask,
-                onMoreButtonClick = { onTimeTaskEdit.invoke(timeTask) },
-                onIncreaseTime = { onTimeTaskIncrease.invoke(timeTask) },
-                onReduceTime = { onTimeTaskReduce.invoke(timeTask) },
-                isCompactView = isCompactView,
-            )
-        }
-        TimeTaskStatus.COMPLETED -> {
-            CompletedTimeTaskItem(
-                modifier = modifier,
-                model = timeTask,
-                onItemClick = { onTimeTaskEdit.invoke(timeTask) },
-                onDoneChange = { onDoneChange.invoke(timeTask) },
-                isCompactView = isCompactView,
-            )
-        }
-    }
+    RunningLockTaskItem(
+        modifier = modifier,
+        model = timeTask,
+        onMoreButtonClick = { onTimeTaskEdit.invoke(timeTask) },
+        onChangeStartTime =  {onChangeStartTime.invoke(timeTask.startTime) },
+        onChangeEndTime = { onChangeEndTime.invoke(timeTask.endTime) },
+        isCompactView = isCompactView,
+    )
+
+
+//    when (timeTask.executionStatus) {
+//        TimeTaskStatus.PLANNED -> {
+//            PlannedTimeTaskItem(
+//                modifier = modifier,
+//                model = timeTask,
+//                onItemClick = { onTimeTaskEdit.invoke(timeTask) },
+//                isCompactView = isCompactView,
+//            )
+//        }
+//        TimeTaskStatus.RUNNING -> {
+//            RunningTimeTaskItem(
+//                modifier = modifier,
+//                model = timeTask,
+//                onMoreButtonClick = { onTimeTaskEdit.invoke(timeTask) },
+//                onIncreaseTime = { onTimeTaskIncrease.invoke(timeTask) },
+//                onReduceTime = { onTimeTaskReduce.invoke(timeTask) },
+//                isCompactView = isCompactView,
+//            )
+//        }
+//        TimeTaskStatus.COMPLETED -> {
+//            CompletedTimeTaskItem(
+//                modifier = modifier,
+//                model = timeTask,
+//                onItemClick = { onTimeTaskEdit.invoke(timeTask) },
+//                onDoneChange = { onDoneChange.invoke(timeTask) },
+//                isCompactView = isCompactView,
+//            )
+//        }
+//    }
 }
 
 /* ----------------------- Release Preview -----------------------

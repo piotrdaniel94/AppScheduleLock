@@ -40,6 +40,8 @@ internal sealed class HomeEvent : BaseEvent {
     object CreateSchedule : HomeEvent()
     data class TimeTaskShiftUp(val timeTask: TimeTaskUi) : HomeEvent()
     data class TimeTaskShiftDown(val timeTask: TimeTaskUi) : HomeEvent()
+    data class onChangeStartTime(val changeStartTime: Date) : HomeEvent()
+    data class onChangeEndTime(val changeEndTime: Date) : HomeEvent()
     data class LoadSchedule(val date: Date?) : HomeEvent()
     data class PressEditTimeTaskButton(val timeTask: TimeTaskUi) : HomeEvent()
     data class PressChangeDoneStateButton(val timeTask: TimeTaskUi) : HomeEvent()
