@@ -72,6 +72,11 @@ object Dependencies {
         const val kapt = "androidx.room:room-compiler:${Versions.room}"
     }
 
+    object AppLock {
+        const val recycler = "androidx.recyclerview:recyclerview:1.3.0"
+        const val reactvex =  "io.reactivex.rxjava2:rxandroid:2.1.1"
+    }
+
     object Test {
         const val jUnit = "junit:junit:${Versions.jUnit}"
         const val composeJUnit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
@@ -80,4 +85,5 @@ object Dependencies {
         const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     }
+
 }

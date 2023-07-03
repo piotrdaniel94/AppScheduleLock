@@ -15,6 +15,9 @@
  */
 package ru.piotr.features.editor.impl.presentation.ui.editor
 
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -33,7 +36,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import ru.piotr.core.utils.extensions.shiftMillis
 import ru.piotr.core.utils.functional.TimeRange
@@ -43,12 +46,11 @@ import ru.piotr.features.editor.impl.presentation.ui.editor.contract.EditorViewS
 import ru.piotr.features.editor.impl.presentation.ui.editor.screenmodel.CategoryValidateError
 import ru.piotr.features.editor.impl.presentation.ui.editor.screenmodel.TimeRangeError
 import ru.piotr.features.editor.impl.presentation.ui.editor.views.*
-import ru.piotr.features.editor.impl.presentation.ui.editor.views.EndTimeField
-import ru.piotr.features.editor.impl.presentation.ui.editor.views.StartTimeField
-import ru.piotr.features.editor.impl.presentation.ui.editor.views.SubCategoryChooser
+import ru.piotr.features.home.api.data.datasources.lockapps.AppData
 import ru.piotr.features.home.api.domains.entities.categories.Categories
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
+
 
 /**
  * @author Stanislav Aleshin on 25.02.2023.
@@ -66,10 +68,15 @@ internal fun EditorContent(
     onCancelClick: () -> Unit,
 ) {
     val scrollState = rememberScrollState()
-    Column(modifier = modifier.fillMaxSize().animateContentSize()) {
+    Column(modifier = modifier
+        .fillMaxSize()
+        .animateContentSize()) {
         if (state.editModel != null) {
             Column(
-                modifier = Modifier.weight(1f).verticalScroll(scrollState).padding(top = 16.dp),
+                modifier = Modifier
+                    .weight(1f)
+                    .verticalScroll(scrollState)
+                    .padding(top = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 CategoriesSection(
@@ -140,15 +147,45 @@ internal fun CategoriesSection(
             }
         }
         val findCategories = allCategories.find { it.mainCategory == mainCategory }
-        SubCategoryChooser(
+//        SubCategoryChooser(
+//            modifier = Modifier.fillMaxWidth(),
+//            mainCategory = mainCategory,
+//            allSubCategories = findCategories?.subCategories ?: emptyList(),
+//            currentSubCategory = subCategory,
+//            onAddCategory = onAddSubCategory,
+//            onSubCategoryChange = { newSubCategory ->
+//                if (mainCategory != null) onCategoriesChange(mainCategory, newSubCategory)
+//            },
+//        )
+
+//        val context = LocalContext.current;
+//        var pm: PackageManager = context.packageManager;
+//        val pi: PackageInfo = pm.getPackageInfo("com.smartr.cutomerapp", 0)
+//        var appInfo: ApplicationInfo? = null
+//        appInfo = try {
+//            pm.getApplicationInfo("com.smartr.cutomerapp", PackageManager.GET_META_DATA)
+//        } catch (e: PackageManager.NameNotFoundException) {
+//            return
+//        }
+
+        var list: List<AppData> = emptyList();
+        var new = AppData(
+                "Name",
+                "com.example.package",
+                null,
+            )
+        list += new
+        list += new
+        list += new
+        list += new
+        list += new
+
+        LockAppChooser(
             modifier = Modifier.fillMaxWidth(),
             mainCategory = mainCategory,
-            allSubCategories = findCategories?.subCategories ?: emptyList(),
-            currentSubCategory = subCategory,
-            onAddCategory = onAddSubCategory,
-            onSubCategoryChange = { newSubCategory ->
-                if (mainCategory != null) onCategoriesChange(mainCategory, newSubCategory)
-            },
+            allInstalledApps = list,
+            onAddLockApp = {},
+            onRemoveLockApp = {},
         )
     }
 }
@@ -241,7 +278,9 @@ internal fun ActionButtonsSection(
     var isWarningDialogOpen by rememberSaveable { mutableStateOf(false) }
     Box(modifier = modifier, contentAlignment = Alignment.BottomStart) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             FilledTonalButton(

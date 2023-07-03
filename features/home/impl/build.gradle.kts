@@ -88,13 +88,16 @@ dependencies {
 
     implementation(Dependencies.Compose.ui)
     implementation(Dependencies.Compose.activity)
-
     implementation(Dependencies.Dagger.core)
-    kapt(Dependencies.Dagger.kapt)
 
+    kapt(Dependencies.Dagger.kapt)
     implementation(Dependencies.Voyager.navigator)
     implementation(Dependencies.Voyager.screenModel)
     implementation(Dependencies.Voyager.transitions)
+
+    implementation(Dependencies.AppLock.recycler)
+//    implementation(Dependencies.AppLock.reactvex)
+//    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 
     debugImplementation(Dependencies.Compose.uiTooling)
     debugImplementation(Dependencies.Compose.uiTestManifest)
