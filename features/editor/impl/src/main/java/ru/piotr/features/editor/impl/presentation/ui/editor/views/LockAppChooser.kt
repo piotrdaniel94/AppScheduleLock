@@ -80,7 +80,7 @@ internal fun LockAppChooser(
                 style = MaterialTheme.typography.labelMedium,
             )
             var blockedAppNames : String = ""
-            allInstalledApps.onEach {app->
+            allInstalledApps.onEach { app->
                 blockedAppNames += app.appName
             }
 
