@@ -91,37 +91,19 @@ internal fun LockAppChooser(
             )
         }
 
-        val tint = when (mainCategory != null) {
-            true -> MaterialTheme.colorScheme.onSurface
-            false -> MaterialTheme.colorScheme.surfaceVariant
-        }
+//        val tint = when (mainCategory != null) {
+//            true -> MaterialTheme.colorScheme.onSurface
+//            false -> MaterialTheme.colorScheme.surfaceVariant
+//        }
         Icon(
             modifier = Modifier.animateContentSize(),
             painter = painterResource(EditorThemeRes.icons.add),
             contentDescription = EditorThemeRes.strings.mainCategoryChooserExpandedIconDesc,
-            tint = tint,
+//            tint = tint,
         )
         }
     }
-//    var context = LocalContext.current
-//
-//    var mainIntent = Intent(Intent.ACTION_MAIN, null)
-//    val addCategory = mainIntent.addCategory(Intent.CATEGORY_LAUNCHER)
-//    val resolveInfoList : List<ResolveInfo> = context.packageManager.queryIntentActivities(mainIntent, 0)
-//    var appDataList: List<AppData> = emptyList()
-//    resolveInfoList.forEach { resolveInfo ->
-//        with(resolveInfo) {
-//            if (activityInfo.packageName != context.packageName) {
-//                val mainActivityName = activityInfo.name.substring(activityInfo.name.lastIndexOf(".") + 1)
-//                val appData = AppData(
-//                    appName = loadLabel(context.packageManager) as String,
-//                    packageName = "${activityInfo.packageName}/$mainActivityName",
-//                    appIconDrawable = loadIcon(context.packageManager)
-//                )
-//                appDataList += appData;
-//            }
-//        }
-//    }
+
     if (openDialog.value) {
         LockAppDialogChooser(
             allInstalledApps = allInstalledApps,

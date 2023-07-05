@@ -37,24 +37,7 @@ interface LockAppsLocalDataSource {
     ) : LockAppsLocalDataSource {
 
         override suspend fun fetchInstalledAppList(): List<AppData> {
-                val mainIntent = Intent(Intent.ACTION_MAIN, null)
-//            val addCategory = mainIntent.addCategory(Intent.CATEGORY_LAUNCHER)
-//                val resolveInfoList: List<ResolveInfo> = context.packageManager.queryIntentActivities(mainIntent, 0)
-
                 val appDataList: ArrayList<AppData> = arrayListOf()
-//                resolveInfoList.forEach { resolveInfo ->
-//                    with(resolveInfo) {
-//                        if (activityInfo.packageName != context.packageName) {
-//                            val mainActivityName = activityInfo.name.substring(activityInfo.name.lastIndexOf(".") + 1)
-//                            val appData = AppData(
-//                                appName = loadLabel(context.packageManager) as String,
-//                                packageName = "${activityInfo.packageName}/$mainActivityName",
-//                                appIconDrawable = loadIcon(context.packageManager)
-//                            )
-//                            appDataList.add(appData)
-//                        }
-//                    }
-//                }
 
                 val lockedAppList = lockAppsDao.getLockedAppsSync()
 
