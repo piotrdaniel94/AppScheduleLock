@@ -26,6 +26,7 @@ import ru.piotr.features.editor.impl.presentation.ui.editor.screenmodel.TimeRang
 import ru.piotr.features.home.api.domains.entities.categories.Categories
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 import ru.piotr.features.home.api.domains.entities.template.Template
 
 /**
@@ -38,6 +39,7 @@ internal data class EditorViewState(
     val templates: List<Template>? = null,
     val timeRangeValid: TimeRangeError? = null,
     val categoryValid: CategoryValidateError? = null,
+    val lockedApps: List<LockApp>?= null,
 ) : BaseViewState
 
 internal sealed class EditorEvent : BaseEvent {

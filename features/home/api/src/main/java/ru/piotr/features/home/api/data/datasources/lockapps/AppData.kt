@@ -24,6 +24,6 @@ data class AppData(val appName: String, val packageName: String, val appIconDraw
     }
 
     fun toEntity(): LockedAppEntity {
-        return LockedAppEntity(packageName = packageName)
+        return LockedAppEntity(packageName = packageName, name = appName, mainCategoryId = null)
     }
 }

@@ -15,6 +15,8 @@
  */
 package ru.piotr.features.editor.impl.presentation.ui.editor.views
 
+import android.content.Intent
+import android.content.pm.ResolveInfo
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import androidx.compose.animation.animateContentSize
@@ -34,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -43,6 +46,7 @@ import ru.piotr.core.ui.views.DialogButtons
 import ru.piotr.features.editor.impl.presentation.theme.EditorThemeRes
 import ru.piotr.features.home.api.data.datasources.lockapps.AppData
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
+import java.util.ArrayList
 
 /**
  * @author Stanislav Aleshin on 26.02.2023.
@@ -79,6 +83,7 @@ internal fun LockAppChooser(
             allInstalledApps.onEach {app->
                 blockedAppNames += app.appName
             }
+
             Text(
                 text = blockedAppNames ?: EditorThemeRes.strings.categoryNotSelectedTitle,
                 color = MaterialTheme.colorScheme.onSurface,
@@ -98,6 +103,25 @@ internal fun LockAppChooser(
         )
         }
     }
+//    var context = LocalContext.current
+//
+//    var mainIntent = Intent(Intent.ACTION_MAIN, null)
+//    val addCategory = mainIntent.addCategory(Intent.CATEGORY_LAUNCHER)
+//    val resolveInfoList : List<ResolveInfo> = context.packageManager.queryIntentActivities(mainIntent, 0)
+//    var appDataList: List<AppData> = emptyList()
+//    resolveInfoList.forEach { resolveInfo ->
+//        with(resolveInfo) {
+//            if (activityInfo.packageName != context.packageName) {
+//                val mainActivityName = activityInfo.name.substring(activityInfo.name.lastIndexOf(".") + 1)
+//                val appData = AppData(
+//                    appName = loadLabel(context.packageManager) as String,
+//                    packageName = "${activityInfo.packageName}/$mainActivityName",
+//                    appIconDrawable = loadIcon(context.packageManager)
+//                )
+//                appDataList += appData;
+//            }
+//        }
+//    }
     if (openDialog.value) {
         LockAppDialogChooser(
             allInstalledApps = allInstalledApps,

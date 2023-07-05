@@ -20,16 +20,8 @@ import dagger.Module
 import ru.piotr.features.home.api.data.mappers.schedules.*
 import ru.piotr.features.home.api.data.mappers.template.TemplatesDataToDomainMapper
 import ru.piotr.features.home.api.data.mappers.template.TemplatesDomainToDataMapper
-import ru.piotr.features.home.api.data.repository.CategoriesRepositoryImpl
-import ru.piotr.features.home.api.data.repository.ScheduleRepositoryImpl
-import ru.piotr.features.home.api.data.repository.SubCategoriesRepositoryImpl
-import ru.piotr.features.home.api.data.repository.TemplatesRepositoryImpl
-import ru.piotr.features.home.api.data.repository.TimeTaskRepositoryImpl
-import ru.piotr.features.home.api.domains.repository.CategoriesRepository
-import ru.piotr.features.home.api.domains.repository.ScheduleRepository
-import ru.piotr.features.home.api.domains.repository.SubCategoriesRepository
-import ru.piotr.features.home.api.domains.repository.TemplatesRepository
-import ru.piotr.features.home.api.domains.repository.TimeTaskRepository
+import ru.piotr.features.home.api.data.repository.*
+import ru.piotr.features.home.api.domains.repository.*
 import ru.piotr.features.settings.api.data.repositories.ThemeSettingsRepositoryImpl
 import ru.piotr.features.settings.api.domain.repositories.ThemeSettingsRepository
 import javax.inject.Singleton
@@ -65,6 +57,10 @@ interface DataModule {
     @Binds
     @Singleton
     fun bindCategoriesRepository(repository: CategoriesRepositoryImpl): CategoriesRepository
+
+    @Binds
+    @Singleton
+    fun bindLockAppsRepository(repository: LockAppsRepositoryImpl): LockAppsRepository
 
     // Mappers
 

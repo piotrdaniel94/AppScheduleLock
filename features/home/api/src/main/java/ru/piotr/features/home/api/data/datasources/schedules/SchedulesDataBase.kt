@@ -19,6 +19,8 @@ import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import ru.piotr.features.home.api.data.datasources.categories.MainCategoriesDao
+import ru.piotr.features.home.api.data.datasources.lockapps.LockedAppEntity
+import ru.piotr.features.home.api.data.datasources.lockapps.LockedAppsDao
 import ru.piotr.features.home.api.data.datasources.subcategories.SubCategoriesDao
 import ru.piotr.features.home.api.data.datasources.templates.TemplatesDao
 import ru.piotr.features.home.api.data.models.categories.MainCategoryEntity
@@ -38,6 +40,7 @@ import ru.piotr.features.home.api.data.models.timetasks.TimeTaskEntity
         TimeTaskEntity::class,
         MainCategoryEntity::class,
         SubCategoryEntity::class,
+        LockedAppEntity::class,
     ],
     exportSchema = true,
     autoMigrations = [
@@ -50,6 +53,7 @@ abstract class SchedulesDataBase : RoomDatabase() {
     abstract fun fetchMainCategoriesDao(): MainCategoriesDao
     abstract fun fetchSubCategoriesDao(): SubCategoriesDao
     abstract fun fetchTemplatesDao(): TemplatesDao
+    abstract fun fetchLockedAppsDao(): LockedAppsDao
 
     companion object {
         const val NAME = "SchedulesDataBase.db"

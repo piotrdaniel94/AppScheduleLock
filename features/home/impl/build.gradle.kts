@@ -96,8 +96,7 @@ dependencies {
     implementation(Dependencies.Voyager.transitions)
 
     implementation(Dependencies.AppLock.recycler)
-//    implementation(Dependencies.AppLock.reactvex)
-//    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation(Dependencies.AppLock.reactvex)
 
     debugImplementation(Dependencies.Compose.uiTooling)
     debugImplementation(Dependencies.Compose.uiTestManifest)

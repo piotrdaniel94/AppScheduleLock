@@ -21,6 +21,8 @@ import dagger.Module
 import dagger.Provides
 import ru.piotr.features.home.api.data.datasources.categories.CategoriesLocalDataSource
 import ru.piotr.features.home.api.data.datasources.categories.MainCategoriesDao
+import ru.piotr.features.home.api.data.datasources.lockapps.LockAppsLocalDataSource
+import ru.piotr.features.home.api.data.datasources.lockapps.LockedAppsDao
 import ru.piotr.features.home.api.data.datasources.schedules.SchedulesDao
 import ru.piotr.features.home.api.data.datasources.schedules.SchedulesDataBase
 import ru.piotr.features.home.api.data.datasources.schedules.SchedulesLocalDataSource
@@ -71,6 +73,13 @@ class DataBaseModule {
         schedulesDao: SchedulesDao,
     ): SchedulesLocalDataSource = SchedulesLocalDataSource.Base(schedulesDao)
 
+    @Provides
+    @Singleton
+    fun provideLockAppsLocalDataSource(
+//        context: Context,
+        dataBase: LockedAppsDao
+    ): LockAppsLocalDataSource = LockAppsLocalDataSource.Base( dataBase)
+
     // Dao
 
     @Provides
@@ -97,6 +106,11 @@ class DataBaseModule {
     @Singleton
     fun provideScheduleDao(dataBase: SchedulesDataBase): SchedulesDao =
         dataBase.fetchSchedulesDao()
+
+    @Provides
+    @Singleton
+    fun provideLockedAppsDao(dataBase: SchedulesDataBase): LockedAppsDao =
+        dataBase.fetchLockedAppsDao()
 
     // DataBases
 

@@ -86,6 +86,11 @@ internal interface EditorWorkProcessor : WorkProcessor<EditorWorkCommand, Editor
             }
         }
 
+        private suspend fun addLockAppWork()
+        {
+            ///myj
+        }
+
         private suspend fun loadSendModel(): WorkResult<EditorAction, EditorEffect> {
             val editModel = editorInteractor.fetchEditModel().mapToUi()
             return when (val result = categoriesInteractor.fetchCategories()) {

@@ -17,10 +17,27 @@ package ru.piotr.features.home.api.data.datasources.lockapps
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import ru.piotr.features.home.api.data.models.categories.MainCategoryEntity
 
-@Entity(tableName = "locked_app")
-data class LockedAppEntity(@PrimaryKey @ColumnInfo(name = "packageName") val packageName: String) {
+@Entity(
+    tableName = "lockedApps",
+    foreignKeys = [
+        ForeignKey(
+            entity = MainCategoryEntity::class,
+            parentColumns = arrayOf("id"),
+            childColumns = arrayOf("main_category_id"),
+            onDelete = ForeignKey.CASCADE,
+        ),
+    ],
+)
+data class LockedAppEntity(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @ColumnInfo("name") val name: String,
+    @ColumnInfo("package_name") val packageName: String,
+    @ColumnInfo("main_category_id", index = true) val mainCategoryId: Int?,
+) {
 
     fun parsePackageName() : String{
         return packageName.substring(0, packageName.indexOf("/"))

@@ -16,26 +16,31 @@
 package ru.piotr.features.home.api.data.datasources.lockapps
 
 import androidx.room.*
+import ru.piotr.features.home.api.data.models.categories.SubCategoryEntity
+
 //import io.reactivex.Flowable
 
 @Dao
-abstract class LockedAppsDao {
+interface LockedAppsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun lockApp(lockedAppEntity: LockedAppEntity)
+    suspend fun lockApp(lockedAppEntity: LockedAppEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun lockApps(lockedAppEntityList: List<LockedAppEntity>)
+    suspend fun lockApps(lockedAppEntityList: List<LockedAppEntity>)
 
 //    @Query("SELECT * FROM locked_app")
 //    abstract fun getLockedApps(): Flowable<List<LockedAppEntity>>
 
-    @Query("SELECT * FROM locked_app")
-    abstract fun getLockedAppsSync(): List<LockedAppEntity>
+    @Query("SELECT * FROM lockedApps")
+    suspend fun getLockedAppsSync(): List<LockedAppEntity>
 
-    @Query("DELETE FROM locked_app WHERE packageName = :packageName")
-    abstract fun unlockApp(packageName: String)
+    @Query("SELECT * FROM lockedApps WHERE main_category_id = :id")
+    suspend fun fetchLockedAppsByTypeId(id: Int): List<LockedAppEntity>
 
-    @Query("DELETE FROM locked_app")
-    abstract fun unlockAll()
+    @Query("DELETE FROM lockedApps WHERE package_name = :packageName")
+    suspend fun unlockApp(packageName: String)
+
+    @Query("DELETE FROM lockedApps")
+    suspend fun unlockAll()
 }

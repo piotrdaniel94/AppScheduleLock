@@ -13,23 +13,20 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.home.api.domains.entities.lockapp
+package ru.piotr.features.home.api.data.mappers.lockapps
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-import ru.piotr.features.home.api.domains.common.MainIcon
+import ru.piotr.features.home.api.data.datasources.lockapps.LockedAppEntity
+import ru.piotr.features.home.api.domains.entities.categories.MainCategory
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 
-@Parcelize
-data class LockApp(
-    val id: Int = 0,
-    val name: String,
-    val packageName: String,
-    val mainCategoryId: Int? = null,
-) : Parcelable {
-    companion object {
-        fun absent() = LockApp(
-            name = "Отсутсвует",
-            packageName = "Empty",
-        )
-    }
-}
+fun LockedAppEntity.mapToDomain(mainCate: MainCategory)= LockApp(
+    name = name,
+    packageName = packageName,
+    mainCategoryId = mainCate.id,
+)
+
+fun LockApp.mapToData() = LockedAppEntity(
+    name = name,
+    packageName = packageName,
+    mainCategoryId = mainCategoryId,
+)

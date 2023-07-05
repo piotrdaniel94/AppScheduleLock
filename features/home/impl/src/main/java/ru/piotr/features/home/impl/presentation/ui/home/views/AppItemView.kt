@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import ru.piotr.core.ui.views.toMinutesOrHoursTitle
 import ru.piotr.features.home.api.presentation.mappers.fetchNameByLanguage
@@ -122,6 +123,7 @@ internal fun LazyItemScope.AppNormalItem(
                     time = model.endTime,
                     isVisible = isCompactView,
                 )
+                LocalContext.current
                 RunningTimeTask(
                     modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp).animateContentSize(),
                     onMoreButtonClick = { onMoreButtonClick.invoke(key) },

@@ -15,9 +15,10 @@
  */
 package ru.piotr.features.editor.impl.presentation.ui.editor
 
+import android.content.Intent
 import android.content.pm.ApplicationInfo
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -158,32 +159,64 @@ internal fun CategoriesSection(
 //            },
 //        )
 
-//        val context = LocalContext.current;
-//        var pm: PackageManager = context.packageManager;
-//        val pi: PackageInfo = pm.getPackageInfo("com.smartr.cutomerapp", 0)
-//        var appInfo: ApplicationInfo? = null
-//        appInfo = try {
-//            pm.getApplicationInfo("com.smartr.cutomerapp", PackageManager.GET_META_DATA)
-//        } catch (e: PackageManager.NameNotFoundException) {
-//            return
-//        }
+        val context = LocalContext.current
 
-        var list: List<AppData> = emptyList();
-        var new = AppData(
-                "Name",
-                "com.example.package",
-                null,
-            )
-        list += new
-        list += new
-        list += new
-        list += new
-        list += new
+        var mainIntent = Intent(Intent.ACTION_MAIN, null)
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER)
+
+        val resolveInfoList : List<ResolveInfo> = context.packageManager.queryIntentActivities(mainIntent, 0)
+        var appDataList: List<AppData> = emptyList()
+
+        val flags = PackageManager.GET_META_DATA or
+                PackageManager.GET_SHARED_LIBRARY_FILES or
+                PackageManager.GET_UNINSTALLED_PACKAGES
+
+        val applications = context.packageManager.getInstalledApplications(flags)
+        for (appInfo in applications) {
+            if (appInfo.flags and ApplicationInfo.FLAG_SYSTEM == 1) {
+                // System application
+                if (appInfo.packageName != context.packageName) {
+                    val mainActivityName = appInfo.name.substring(appInfo.name.lastIndexOf(".") + 1)
+                    val appData = AppData(
+                        appName = appInfo.name,//loadLabel(context.packageManager) as String,
+                        packageName = "${appInfo.packageName}/$mainActivityName",
+                        appIconDrawable = appInfo.loadIcon(context.packageManager)
+                    )
+                    appDataList += appData;
+                }
+            } else {
+                if (appInfo.packageName != context.packageName) {
+                    val mainActivityName = appInfo.name.substring(appInfo.name.lastIndexOf(".") + 1)
+                    val appData = AppData(
+                        appName = appInfo.name,//loadLabel(context.packageManager) as String,
+                        packageName = "${appInfo.packageName}/$mainActivityName",
+                        appIconDrawable = appInfo.loadIcon(context.packageManager)
+                    )
+                    appDataList += appData;
+                }
+            }
+        }
+
+
+
+//        resolveInfoList.forEach { resolveInfo ->
+//            with(resolveInfo) {
+//                if (activityInfo.packageName != context.packageName) {
+//                    val mainActivityName = activityInfo.name.substring(activityInfo.name.lastIndexOf(".") + 1)
+//                    val appData = AppData(
+//                        appName = loadLabel(context.packageManager) as String,
+//                        packageName = "${activityInfo.packageName}/$mainActivityName",
+//                        appIconDrawable = loadIcon(context.packageManager)
+//                    )
+//                    appDataList += appData;
+//                }
+//            }
+//        }
 
         LockAppChooser(
             modifier = Modifier.fillMaxWidth(),
             mainCategory = mainCategory,
-            allInstalledApps = list,
+            allInstalledApps = appDataList,
             onAddLockApp = {},
             onRemoveLockApp = {},
         )

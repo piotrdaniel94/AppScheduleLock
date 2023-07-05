@@ -23,6 +23,8 @@ import ru.piotr.core.utils.managers.DateManager
 import ru.piotr.core.utils.platform.screenmodel.BaseScreenModel
 import ru.piotr.core.utils.platform.screenmodel.work.BackgroundWorkKey
 import ru.piotr.core.utils.platform.screenmodel.work.WorkScope
+import ru.piotr.features.home.api.data.datasources.lockapps.LockAppsLocalDataSource
+import ru.piotr.features.home.api.data.datasources.lockapps.LockedAppsDao
 import ru.piotr.features.home.impl.di.holder.HomeComponentHolder
 import ru.piotr.features.home.impl.presentation.ui.home.contract.HomeAction
 import ru.piotr.features.home.impl.presentation.ui.home.contract.HomeEffect
@@ -38,6 +40,8 @@ internal class HomeScreenModel @Inject constructor(
     private val scheduleWorkProcessor: ScheduleWorkProcessor,
     private val navigationWorkProcessor: NavigationWorkProcessor,
     private val dateManager: DateManager,
+//    val appsLocalDataSource: LockAppsLocalDataSource,
+//    val lockedAppsDao: LockedAppsDao,
     stateCommunicator: HomeStateCommunicator,
     effectCommunicator: HomeEffectCommunicator,
     coroutineManager: CoroutineManager,
