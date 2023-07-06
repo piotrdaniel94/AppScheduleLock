@@ -20,6 +20,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ResolveInfo
 import androidx.compose.ui.platform.LocalContext
+import ru.piotr.features.home.api.data.models.categories.MainCategoryEntity
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 import java.util.ArrayList
@@ -30,7 +31,8 @@ interface LockAppsLocalDataSource {
     suspend fun orderAppsByLockStatus(allApps: List<AppData>, lockedApps: List<LockedAppEntity>): List<AppData>
     suspend fun fetchLockedAppsByType(type: MainCategory) : List<LockedAppEntity>
     suspend fun fetchAllLockedApps(): List<LockedAppEntity>
-
+    suspend fun addLockApp(app: LockedAppEntity): Long
+    suspend fun addLockApps(apps: List<LockedAppEntity>)
     class Base @Inject constructor(
 //        val context: Context,
         private val lockAppsDao: LockedAppsDao,
@@ -58,7 +60,6 @@ interface LockAppsLocalDataSource {
                 }
             }
 
-
             val alphabeticOrderList: ArrayList<AppData> = arrayListOf()
 
             allApps.forEach { appData ->
@@ -78,6 +79,14 @@ interface LockAppsLocalDataSource {
 
         override suspend fun fetchAllLockedApps(): List<LockedAppEntity> {
             return lockAppsDao.getLockedAppsSync()
+        }
+
+        override suspend fun addLockApp(app: LockedAppEntity): Long{
+            return lockAppsDao.lockApp(app)
+        }
+
+        override suspend fun addLockApps(appes: List<LockedAppEntity>) {
+            lockAppsDao.lockApps(appes)
         }
     }
 }

@@ -20,11 +20,10 @@ import ru.piotr.core.utils.managers.DateManager
 import ru.piotr.core.utils.managers.TimeOverlayManager
 import ru.piotr.core.utils.navigation.Router
 import ru.piotr.features.editor.api.presentation.TimeTaskAlarmManager
+import ru.piotr.features.home.api.data.datasources.lockapps.LockAppsLocalDataSource
 import ru.piotr.features.home.api.data.datasources.schedules.SchedulesLocalDataSource
-import ru.piotr.features.home.api.domains.repository.CategoriesRepository
-import ru.piotr.features.home.api.domains.repository.SubCategoriesRepository
-import ru.piotr.features.home.api.domains.repository.TemplatesRepository
-import ru.piotr.features.home.api.domains.repository.TimeTaskRepository
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
+import ru.piotr.features.home.api.domains.repository.*
 import ru.piotr.features.home.api.navigation.HomeFeatureStarter
 import ru.piotr.module_injector.BaseFeatureDependencies
 
@@ -36,6 +35,8 @@ interface EditorFeatureDependencies : BaseFeatureDependencies {
     val homeFeatureStarter: HomeFeatureStarter
     val categoriesRepository: CategoriesRepository
     val schedulesLocalDataSource: SchedulesLocalDataSource
+    val lockAppsLocalDataSource: LockAppsLocalDataSource
+    val lockAppsRepository: LockAppsRepository
     val timeTaskRepository: TimeTaskRepository
     val templatesRepository: TemplatesRepository
     val subCategoriesRepository: SubCategoriesRepository

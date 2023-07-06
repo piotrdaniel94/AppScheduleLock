@@ -17,6 +17,7 @@ package ru.piotr.features.home.api.data.datasources.lockapps
 
 import androidx.room.*
 import ru.piotr.features.home.api.data.models.categories.SubCategoryEntity
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 
 //import io.reactivex.Flowable
 
@@ -24,7 +25,7 @@ import ru.piotr.features.home.api.data.models.categories.SubCategoryEntity
 interface LockedAppsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun lockApp(lockedAppEntity: LockedAppEntity)
+    suspend fun lockApp(lockedAppEntity: LockedAppEntity): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun lockApps(lockedAppEntityList: List<LockedAppEntity>)

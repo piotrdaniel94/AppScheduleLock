@@ -17,6 +17,8 @@ package ru.piotr.features.home.api.data.repository
 
 import ru.piotr.features.home.api.data.datasources.lockapps.AppData
 import ru.piotr.features.home.api.data.datasources.lockapps.LockAppsLocalDataSource
+import ru.piotr.features.home.api.data.datasources.lockapps.LockedAppEntity
+import ru.piotr.features.home.api.data.mappers.lockapps.mapToData
 import ru.piotr.features.home.api.data.mappers.lockapps.mapToDomain
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
@@ -36,7 +38,12 @@ class LockAppsRepositoryImpl  @Inject constructor(
     }
 
     override suspend fun addLockApps(apps: List<LockApp>) {
-        TODO("Not yet implemented")
+        localDataSource.addLockApps(apps.map { it.mapToData() })
+    }
+
+    override suspend fun addLockOneApp(app: LockApp):Long
+    {
+        return localDataSource.addLockApp(app.mapToData())
     }
 
     override suspend fun updateLockApp(app: LockApp) {

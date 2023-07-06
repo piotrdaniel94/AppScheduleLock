@@ -24,6 +24,7 @@ import ru.piotr.features.editor.impl.domain.common.convertToEditModel
 import ru.piotr.features.editor.impl.domain.common.convertToTemplate
 import ru.piotr.features.editor.impl.domain.interactors.CategoriesInteractor
 import ru.piotr.features.editor.impl.domain.interactors.EditorInteractor
+import ru.piotr.features.editor.impl.domain.interactors.LockAppsInteractor
 import ru.piotr.features.editor.impl.domain.interactors.TemplatesInteractor
 import ru.piotr.features.editor.impl.navigation.NavigationManager
 import ru.piotr.features.editor.impl.presentation.mappers.mapToDomain
@@ -31,8 +32,10 @@ import ru.piotr.features.editor.impl.presentation.mappers.mapToUi
 import ru.piotr.features.editor.impl.presentation.models.EditModelUi
 import ru.piotr.features.editor.impl.presentation.ui.editor.contract.EditorAction
 import ru.piotr.features.editor.impl.presentation.ui.editor.contract.EditorEffect
+import ru.piotr.features.home.api.data.datasources.lockapps.AppData
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 import ru.piotr.features.home.api.domains.entities.template.Template
 import javax.inject.Inject
 
@@ -46,6 +49,7 @@ internal interface EditorWorkProcessor : WorkProcessor<EditorWorkCommand, Editor
         private val categoriesInteractor: CategoriesInteractor,
         private val templatesInteractor: TemplatesInteractor,
         private val navigationManager: NavigationManager,
+        private val lockAppIteractor: LockAppsInteractor,
     ) : EditorWorkProcessor {
 
         override suspend fun work(command: EditorWorkCommand) = when (command) {
@@ -56,6 +60,7 @@ internal interface EditorWorkProcessor : WorkProcessor<EditorWorkCommand, Editor
             is EditorWorkCommand.ChangeIsTemplate -> changeIsTemplate(command.editModel)
             is EditorWorkCommand.ChangeTimeRange -> changeTimeRange(command.timeRange)
             is EditorWorkCommand.ApplyTemplate -> applyTemplate(command.template, command.model)
+            is EditorWorkCommand.AddLockApp -> addLockAppWork(command.app, command.mainCategory)
         }
 
         private fun navigateToBack(): WorkResult<EditorAction, EditorEffect> {
@@ -86,9 +91,18 @@ internal interface EditorWorkProcessor : WorkProcessor<EditorWorkCommand, Editor
             }
         }
 
-        private suspend fun addLockAppWork()
+        private suspend fun addLockAppWork(app: AppData, category: MainCategory): WorkResult<EditorAction, EditorEffect>
         {
-            ///myj
+            val lockApp = LockApp(name = app.appName, packageName = app.packageName, mainCategory = category)
+            return when (val result = lockAppIteractor.addLockApp(lockApp)) {
+                is Either.Right -> {
+                    when (val lockedApps = lockAppIteractor.fetchLockApps(category)) {
+                        is Either.Right -> ActionResult(EditorAction.UpdateLockedApps(lockedApps.data))
+                        is Either.Left -> EffectResult(EditorEffect.ShowError(lockedApps.data))
+                    }
+                }
+                is Either.Left -> EffectResult(EditorEffect.ShowError(result.data))
+            }
         }
 
         private suspend fun loadSendModel(): WorkResult<EditorAction, EditorEffect> {
@@ -138,4 +152,5 @@ internal sealed class EditorWorkCommand : WorkCommand {
     data class ChangeIsTemplate(val editModel: EditModelUi) : EditorWorkCommand()
     data class ChangeTimeRange(val timeRange: TimeRange) : EditorWorkCommand()
     data class ApplyTemplate(val template: Template, val model: EditModelUi) : EditorWorkCommand()
+    data class AddLockApp(val app: AppData, val mainCategory: MainCategory) : EditorWorkCommand()
 }

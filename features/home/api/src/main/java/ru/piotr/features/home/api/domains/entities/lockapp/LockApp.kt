@@ -18,13 +18,14 @@ package ru.piotr.features.home.api.domains.entities.lockapp
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import ru.piotr.features.home.api.domains.common.MainIcon
+import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 
 @Parcelize
 data class LockApp(
     val id: Int = 0,
     val name: String,
     val packageName: String,
-    val mainCategoryId: Int? = null,
+    val mainCategory: MainCategory? = null,
 ) : Parcelable {
     companion object {
         fun absent() = LockApp(

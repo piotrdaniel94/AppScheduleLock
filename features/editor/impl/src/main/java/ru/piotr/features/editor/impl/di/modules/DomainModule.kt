@@ -19,6 +19,7 @@ import dagger.Binds
 import dagger.Module
 import ru.piotr.features.editor.impl.domain.common.EditorEitherWrapper
 import ru.piotr.features.editor.impl.domain.common.EditorErrorHandler
+import ru.piotr.features.editor.impl.domain.interactors.*
 import ru.piotr.features.editor.impl.domain.interactors.CategoriesInteractor
 import ru.piotr.features.editor.impl.domain.interactors.EditorInteractor
 import ru.piotr.features.editor.impl.domain.interactors.TemplatesInteractor
@@ -41,6 +42,9 @@ internal interface DomainModule {
 
     @Binds
     fun bindCategoriesInteractor(interactor: CategoriesInteractor.Base): CategoriesInteractor
+
+    @Binds
+    fun bindLockAppsInteractor(interactor: LockAppsInteractor.Base): LockAppsInteractor
 
     @Binds
     fun bindHomeEitherWrapper(wrapper: EditorEitherWrapper.Base): EditorEitherWrapper

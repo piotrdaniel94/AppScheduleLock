@@ -31,6 +31,7 @@ internal interface EditorErrorHandler : ErrorHandler<EditorFailures> {
                 startOverlay = throwable.startOverlay,
                 endOverlay = throwable.endOverlay,
             )
+//            is LockAppsException -> EditorFailures.LockAppsError(throwable)
             else -> EditorFailures.OtherError(throwable)
         }
     }

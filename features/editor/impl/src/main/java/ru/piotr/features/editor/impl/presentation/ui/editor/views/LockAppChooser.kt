@@ -19,6 +19,7 @@ import android.content.Intent
 import android.content.pm.ResolveInfo
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -36,8 +37,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
@@ -46,6 +47,7 @@ import ru.piotr.core.ui.views.DialogButtons
 import ru.piotr.features.editor.impl.presentation.theme.EditorThemeRes
 import ru.piotr.features.home.api.data.datasources.lockapps.AppData
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 import java.util.ArrayList
 
 /**
@@ -56,6 +58,7 @@ internal fun LockAppChooser(
     modifier: Modifier = Modifier,
     mainCategory: MainCategory?,
     allInstalledApps: List<AppData>,
+    lockedApps: List<LockApp>?,
     onAddLockApp: (AppData?) -> Unit,
     onRemoveLockApp: (AppData?) -> Unit,
 ) {
@@ -80,9 +83,7 @@ internal fun LockAppChooser(
                 style = MaterialTheme.typography.labelMedium,
             )
             var blockedAppNames : String = ""
-            allInstalledApps.onEach { app->
-                blockedAppNames += app.appName
-            }
+            lockedApps?.onEach { app-> blockedAppNames += app.name }
 
             Text(
                 text = blockedAppNames ?: EditorThemeRes.strings.categoryNotSelectedTitle,
@@ -107,9 +108,21 @@ internal fun LockAppChooser(
     if (openDialog.value) {
         LockAppDialogChooser(
             allInstalledApps = allInstalledApps,
+            lockedApps = lockedApps,
             onCloseDialog = { openDialog.value = false },
-            onAddAppLock = {
-//                onAddCategory(it)
+            onAddAppLock = { packageName ->
+                    val findInLocked = lockedApps?.find{ it.packageName == packageName }
+                    if(findInLocked == null)
+                    {
+                        val addAppData = allInstalledApps.find { it.packageName == packageName }
+                        var log =""
+                        if(addAppData?.packageName != null)
+                            log = addAppData.packageName
+                        Log.e("onAddAppLoc", log)
+
+                        onAddLockApp(addAppData)
+                    }
+
             },
             onChooseLockApps = {
 //                onSubCategoryChange(it)
@@ -124,6 +137,7 @@ internal fun LockAppChooser(
 internal fun LockAppDialogChooser(
     modifier: Modifier = Modifier,
     allInstalledApps: List<AppData>,
+    lockedApps: List<LockApp>?,
     onCloseDialog: () -> Unit,
     onChooseLockApps: (List<AppData>?) -> Unit,
     onAddAppLock: (String) -> Unit,
@@ -157,10 +171,10 @@ internal fun LockAppDialogChooser(
                 LazyColumn(modifier = Modifier.height(300.dp)) {
                     items(selectedApps) { app ->
                         LockAppDialogItem(
-                            selected = false,
+                            selected = (lockedApps?.find{it.packageName == app.packageName} != null),
                             appName = app.appName,
                             description = app.packageName,
-                            onSelectChange = { },
+                            onSelectChange = { onAddAppLock(app.packageName) },
                             appIconDrawable = app.appIconDrawable,
                         )
                     }
@@ -188,7 +202,7 @@ internal fun LockAppDialogItem(
             modifier = modifier
                 .padding(vertical = 8.dp, horizontal = 16.dp)
                 .clip(MaterialTheme.shapes.medium)
-                .clickable(onClick = onSelectChange)
+                .clickable(onClick = onSelectChange, role = Role.Switch)
                 .padding(start = 8.dp, end = 16.dp)
                 .sizeIn(minHeight = 56.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -202,14 +216,14 @@ internal fun LockAppDialogItem(
                 {
                     Box(
                         modifier = Modifier
-                            .clip(RoundedCornerShape(15.dp))
+                            .clip(RoundedCornerShape(25.dp))
                             .background(MaterialTheme.colorScheme.primary),
                         contentAlignment = Alignment.Center,
                     ) {
                         if (appIconDrawable != null) {
                             Icon(
                                 appIconDrawable.toBitmap(config = Bitmap.Config.ARGB_8888).asImageBitmap(),
-                                modifier = Modifier.size(30.dp, 30.dp),
+                                modifier = Modifier.size(50.dp, 50.dp),
                                 contentDescription = "",
                                 tint = MaterialTheme.colorScheme.onSurface,
                             )
@@ -217,7 +231,7 @@ internal fun LockAppDialogItem(
                         else{
                             Icon(
                                 painter = painterResource(EditorThemeRes.icons.add),
-                                modifier = Modifier.size(30.dp, 30.dp),
+                                modifier = Modifier.size(50.dp, 50.dp),
                                 contentDescription = "",
                                 tint = MaterialTheme.colorScheme.onSurface,
                             )
@@ -242,7 +256,8 @@ internal fun LockAppDialogItem(
 
                 }
             }
-            Checkbox(checked = selected, onCheckedChange = null)
+//            Checkbox(checked = selected, onCheckedChange = null)
+            Switch(checked = selected, onCheckedChange = { onSelectChange(); })
         }
         Divider(
             modifier = Modifier

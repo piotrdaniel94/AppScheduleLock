@@ -76,7 +76,6 @@ class DataBaseModule {
     @Provides
     @Singleton
     fun provideLockAppsLocalDataSource(
-//        context: Context,
         dataBase: LockedAppsDao
     ): LockAppsLocalDataSource = LockAppsLocalDataSource.Base( dataBase)
 

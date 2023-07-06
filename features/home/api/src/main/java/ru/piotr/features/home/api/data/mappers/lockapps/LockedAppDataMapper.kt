@@ -22,11 +22,11 @@ import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 fun LockedAppEntity.mapToDomain(mainCate: MainCategory)= LockApp(
     name = name,
     packageName = packageName,
-    mainCategoryId = mainCate.id,
+    mainCategory = mainCate,
 )
 
 fun LockApp.mapToData() = LockedAppEntity(
     name = name,
     packageName = packageName,
-    mainCategoryId = mainCategoryId,
+    mainCategoryId = mainCategory?.id,
 )

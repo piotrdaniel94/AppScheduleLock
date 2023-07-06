@@ -29,5 +29,7 @@ internal fun EditorFailures.mapToMessage(editorStrings: EditorStrings) = when (t
     } else {
         editorStrings.endOverlayError
     }
+    is EditorFailures.LockAppsError -> editorStrings.lockAppsError
     is EditorFailures.OtherError -> editorStrings.otherError
+
 }

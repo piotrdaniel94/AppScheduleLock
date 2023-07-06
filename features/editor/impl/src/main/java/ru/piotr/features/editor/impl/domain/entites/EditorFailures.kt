@@ -25,5 +25,6 @@ import java.util.*
 @Parcelize
 internal sealed class EditorFailures : DomainFailures {
     data class TimeOverlayError(val startOverlay: Date?, val endOverlay: Date?) : EditorFailures()
+    data class LockAppsError(val throwable: Throwable) : EditorFailures()
     data class OtherError(val throwable: Throwable) : EditorFailures()
 }

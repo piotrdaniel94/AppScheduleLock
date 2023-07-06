@@ -143,6 +143,9 @@ internal class EditorScreenModel @Inject constructor(
         is EditorAction.UpdateCategories -> currentState.copy(
             categories = action.categories,
         )
+        is EditorAction.UpdateLockedApps -> currentState.copy(
+            lockedApps = action.lockedApps,
+        )
     }
 
     private suspend fun WorkScope<EditorViewState, EditorAction, EditorEffect>.updateEditModel(

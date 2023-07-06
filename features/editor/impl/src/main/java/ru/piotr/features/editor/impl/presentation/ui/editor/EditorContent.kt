@@ -51,6 +51,7 @@ import ru.piotr.features.home.api.data.datasources.lockapps.AppData
 import ru.piotr.features.home.api.domains.entities.categories.Categories
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 
 
 /**
@@ -84,6 +85,7 @@ internal fun EditorContent(
                     isMainCategoryValid = state.categoryValid is CategoryValidateError.EmptyCategoryError,
                     mainCategory = state.editModel.mainCategory,
                     subCategory = state.editModel.subCategory,
+                    lockeApps = state.lockedApps,
                     allCategories = state.categories,
                     onCategoriesChange = onCategoriesChange,
                     onAddSubCategory = onAddSubCategory,
@@ -119,6 +121,7 @@ internal fun CategoriesSection(
     mainCategory: MainCategory?,
     subCategory: SubCategory?,
     allCategories: List<Categories>,
+    lockeApps: List<LockApp>?,
     onCategoriesChange: (MainCategory, SubCategory?) -> Unit,
     onAddSubCategory: (String) -> Unit,
 ) {
@@ -185,6 +188,7 @@ internal fun CategoriesSection(
             modifier = Modifier.fillMaxWidth(),
             mainCategory = mainCategory,
             allInstalledApps = appDataList,
+            lockedApps = lockeApps,
             onAddLockApp = {},
             onRemoveLockApp = {},
         )

@@ -13,33 +13,42 @@
  * See the License for the specific language governing permissions and
  * imitations under the License.
  */
-package ru.piotr.features.home.impl.domain.interactors
+package ru.piotr.features.editor.impl.domain.interactors
 
+import ru.piotr.core.utils.functional.DomainResult
 import ru.piotr.core.utils.functional.UnitDomainResult
-import ru.piotr.features.home.api.domains.entities.categories.SubCategory
+import ru.piotr.features.editor.impl.domain.common.EditorEitherWrapper
+import ru.piotr.features.editor.impl.domain.entites.EditorFailures
+import ru.piotr.features.home.api.data.datasources.lockapps.LockedAppEntity
+import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 import ru.piotr.features.home.api.domains.repository.LockAppsRepository
-import ru.piotr.features.home.api.domains.repository.SubCategoriesRepository
-import ru.piotr.features.home.impl.domain.common.HomeEitherWrapper
-import ru.piotr.features.home.impl.domain.entities.HomeFailures
 import javax.inject.Inject
 
 /**
  * @author Stanislav Aleshin on 07.03.2023.
  */
 internal interface LockAppsInteractor {
-
-    suspend fun addLockApp(lock_app: LockApp): UnitDomainResult<HomeFailures>
-    suspend fun updateLockApp(lock_app: LockApp): UnitDomainResult<HomeFailures>
-    suspend fun deleteLockApp(lock_app: LockApp): UnitDomainResult<HomeFailures>
+    suspend fun fetchLockApps(type: MainCategory): DomainResult<EditorFailures, List<LockApp>>
+    suspend fun addLockApps(apps: List<LockApp>): UnitDomainResult<EditorFailures>
+    suspend fun addLockApp(lock_app: LockApp): DomainResult<EditorFailures, Long>
+    suspend fun updateLockApp(lock_app: LockApp): UnitDomainResult<EditorFailures>
+    suspend fun deleteLockApp(lock_app: LockApp): UnitDomainResult<EditorFailures>
 
     class Base @Inject constructor(
         private val lockAppsRepository: LockAppsRepository,
-        private val eitherWrapper: HomeEitherWrapper,
+        private val eitherWrapper: EditorEitherWrapper,
     ) : LockAppsInteractor {
+        override suspend fun fetchLockApps(type: MainCategory) = eitherWrapper.wrap {
+            lockAppsRepository.fetchLockApps(type)
+        }
 
         override suspend fun addLockApp(lock_app: LockApp) = eitherWrapper.wrap {
-            lockAppsRepository.addLockApps(listOf(lock_app))
+            lockAppsRepository.addLockOneApp(lock_app)
+        }
+
+        override suspend fun addLockApps(lock_app_s: List<LockApp>) = eitherWrapper.wrap {
+            lockAppsRepository.addLockApps(lock_app_s)
         }
 
         override suspend fun deleteLockApp(lock_app: LockApp) = eitherWrapper.wrap {

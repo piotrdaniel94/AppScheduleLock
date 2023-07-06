@@ -74,4 +74,5 @@ internal sealed class EditorAction : BaseAction {
     data class UpdateEditModel(val editModel: EditModelUi?) : EditorAction()
     data class UpdateTemplates(val templates: List<Template>) : EditorAction()
     data class SetValidError(val timeRange: TimeRangeError?, val category: CategoryValidateError?) : EditorAction()
+    data class UpdateLockedApps(val lockedApps: List<LockApp>) : EditorAction()
 }
