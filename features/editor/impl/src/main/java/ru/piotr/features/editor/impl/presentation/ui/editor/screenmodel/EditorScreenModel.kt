@@ -105,6 +105,9 @@ internal class EditorScreenModel @Inject constructor(
             val model = checkNotNull(state().editModel)
             editorWorkProcessor.work(EditorWorkCommand.ApplyTemplate(event.template, model)).handleWork()
         }
+        is EditorEvent.AddLockApp -> {
+            editorWorkProcessor.work(EditorWorkCommand.AddLockApp(event.app, event.mainCategory)).handleWork()
+        }
     }
 
     override suspend fun reduce(
@@ -116,6 +119,7 @@ internal class EditorScreenModel @Inject constructor(
             categories = action.categories,
             timeRangeValid = null,
             categoryValid = null,
+            lockedApps = action.lockApps,
         )
         is EditorAction.UpdateEditModel -> currentState.copy(
             editModel = action.editModel,

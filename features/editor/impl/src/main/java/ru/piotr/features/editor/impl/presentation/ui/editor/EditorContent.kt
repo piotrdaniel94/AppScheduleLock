@@ -68,6 +68,7 @@ internal fun EditorContent(
     onChangeTemplate: (Boolean) -> Unit,
     onSaveClick: (isTemplateUpdate: Boolean) -> Unit,
     onCancelClick: () -> Unit,
+    onAddLockAdd: (AppData,MainCategory) -> Unit,
 ) {
     val scrollState = rememberScrollState()
     Column(modifier = modifier
@@ -89,6 +90,7 @@ internal fun EditorContent(
                     allCategories = state.categories,
                     onCategoriesChange = onCategoriesChange,
                     onAddSubCategory = onAddSubCategory,
+                    onAddLockAdd = {AppData-> onAddLockAdd(AppData, state.editModel.mainCategory)},
                 )
                 Divider(Modifier.padding(horizontal = 32.dp))
                 DateTimeSection(
@@ -124,6 +126,7 @@ internal fun CategoriesSection(
     lockeApps: List<LockApp>?,
     onCategoriesChange: (MainCategory, SubCategory?) -> Unit,
     onAddSubCategory: (String) -> Unit,
+    onAddLockAdd: (AppData) -> Unit,
 ) {
     Column(
         modifier = modifier.padding(horizontal = 16.dp),
@@ -189,7 +192,7 @@ internal fun CategoriesSection(
             mainCategory = mainCategory,
             allInstalledApps = appDataList,
             lockedApps = lockeApps,
-            onAddLockApp = {},
+            onAddLockApp = onAddLockAdd,
             onRemoveLockApp = {},
         )
     }

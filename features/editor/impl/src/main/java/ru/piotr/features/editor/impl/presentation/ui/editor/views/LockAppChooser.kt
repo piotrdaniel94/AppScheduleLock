@@ -59,7 +59,7 @@ internal fun LockAppChooser(
     mainCategory: MainCategory?,
     allInstalledApps: List<AppData>,
     lockedApps: List<LockApp>?,
-    onAddLockApp: (AppData?) -> Unit,
+    onAddLockApp: (AppData) -> Unit,
     onRemoveLockApp: (AppData?) -> Unit,
 ) {
     val openDialog = rememberSaveable { mutableStateOf(false) }
@@ -118,9 +118,8 @@ internal fun LockAppChooser(
                         var log =""
                         if(addAppData?.packageName != null)
                             log = addAppData.packageName
-                        Log.e("onAddAppLoc", log)
-
-                        onAddLockApp(addAppData)
+                        if(addAppData != null)
+                            onAddLockApp(addAppData)
                     }
 
             },

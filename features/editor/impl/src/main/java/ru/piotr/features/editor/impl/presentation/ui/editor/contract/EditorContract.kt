@@ -23,6 +23,7 @@ import ru.piotr.features.editor.impl.presentation.models.EditModelUi
 import ru.piotr.features.editor.impl.presentation.models.EditParameters
 import ru.piotr.features.editor.impl.presentation.ui.editor.screenmodel.CategoryValidateError
 import ru.piotr.features.editor.impl.presentation.ui.editor.screenmodel.TimeRangeError
+import ru.piotr.features.home.api.data.datasources.lockapps.AppData
 import ru.piotr.features.home.api.domains.entities.categories.Categories
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
@@ -49,6 +50,7 @@ internal sealed class EditorEvent : BaseEvent {
     data class ChangeParameters(val parameters: EditParameters) : EditorEvent()
     data class ApplyTemplate(val template: Template) : EditorEvent()
     data class AddSubCategory(val name: String) : EditorEvent()
+    data class AddLockApp(val app: AppData, val mainCategory: MainCategory) : EditorEvent()
     object PressControlTemplateButton : EditorEvent()
     object LoadTemplates : EditorEvent()
     object ChangeIsTemplate : EditorEvent()
@@ -67,7 +69,7 @@ internal sealed class EditorEffect : BaseUiEffect {
 
 internal sealed class EditorAction : BaseAction {
     object Navigate : EditorAction()
-    data class SetUp(val editModel: EditModelUi, val categories: List<Categories>) : EditorAction()
+    data class SetUp(val editModel: EditModelUi, val categories: List<Categories>, val lockApps: List<LockApp>) : EditorAction()
     data class UpdateCategories(val categories: List<Categories>) : EditorAction()
     data class UpdateTimeRange(val timeRange: TimeRange, val duration: Long) : EditorAction()
     data class UpdateTemplateId(val templateId: Int?) : EditorAction()

@@ -107,8 +107,14 @@ internal interface EditorWorkProcessor : WorkProcessor<EditorWorkCommand, Editor
 
         private suspend fun loadSendModel(): WorkResult<EditorAction, EditorEffect> {
             val editModel = editorInteractor.fetchEditModel().mapToUi()
+            val fetchLockApps = lockAppIteractor.fetchLockApps(editModel.mainCategory)
+            val lockedApps: List<LockApp>
+            when(fetchLockApps){
+                is Either.Right -> lockedApps = fetchLockApps.data
+                is Either.Left -> lockedApps = emptyList()
+            }
             return when (val result = categoriesInteractor.fetchCategories()) {
-                is Either.Right -> ActionResult(EditorAction.SetUp(editModel, result.data))
+                is Either.Right -> ActionResult(EditorAction.SetUp(editModel, result.data, lockedApps))
                 is Either.Left -> EffectResult(EditorEffect.ShowError(result.data))
             }
         }

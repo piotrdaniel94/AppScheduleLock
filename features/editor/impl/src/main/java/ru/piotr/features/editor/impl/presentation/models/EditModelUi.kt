@@ -22,6 +22,7 @@ import ru.piotr.core.utils.functional.Mapper
 import ru.piotr.core.utils.functional.TimeRange
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 import java.util.Date
 
 /**
@@ -38,6 +39,7 @@ internal data class EditModelUi(
     val isCompleted: Boolean = true,
     val parameters: EditParameters = EditParameters(),
     val templateId: Int? = null,
+    val lockedApps: List<LockApp>?= emptyList(),
 ) : Parcelable {
     fun <T> map(mapper: Mapper<EditModelUi, T>) = mapper.map(this)
 }
