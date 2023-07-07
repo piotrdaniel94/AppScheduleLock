@@ -33,6 +33,7 @@ internal fun TimeTask.convertToEditModel(templateId: Int?) = EditModel(
     isCompleted = isCompleted,
     isEnableNotification = isEnableNotification,
     isConsiderInStatistics = isConsiderInStatistics,
+    lockedApps = lockApps,
     templateId = templateId,
 )
 
@@ -46,4 +47,5 @@ internal fun EditModel.convertToTimeTask() = TimeTask(
     isImportant = isImportant,
     isEnableNotification = isEnableNotification,
     isConsiderInStatistics = isConsiderInStatistics,
+    lockApps = lockedApps,
 )

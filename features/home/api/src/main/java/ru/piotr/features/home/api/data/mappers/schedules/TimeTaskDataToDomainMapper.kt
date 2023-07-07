@@ -20,6 +20,7 @@ import ru.piotr.core.utils.functional.TimeRange
 import ru.piotr.features.home.api.data.mappers.categories.mapToDomain
 import ru.piotr.features.home.api.data.models.timetasks.TimeTaskDetails
 import ru.piotr.features.home.api.data.models.timetasks.TimeTaskEntity
+
 import ru.piotr.features.home.api.domains.entities.schedules.TimeTask
 
 /**
@@ -49,3 +50,4 @@ fun TimeTask.mapToData(dailyScheduleDate: Long) = TimeTaskEntity(
     isEnableNotification = isEnableNotification,
     isConsiderInStatistics = isConsiderInStatistics,
 )
+
