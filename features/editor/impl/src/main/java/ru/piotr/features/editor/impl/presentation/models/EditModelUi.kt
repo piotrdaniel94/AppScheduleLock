@@ -39,7 +39,7 @@ internal data class EditModelUi(
     val isCompleted: Boolean = true,
     val parameters: EditParameters = EditParameters(),
     val templateId: Int? = null,
-//    val lockedApps: List<LockApp>?= emptyList(),
+    val lockedApps: List<LockApp>?= emptyList(),
 ) : Parcelable {
     fun <T> map(mapper: Mapper<EditModelUi, T>) = mapper.map(this)
 }

@@ -86,7 +86,7 @@ internal fun EditorContent(
                     isMainCategoryValid = state.categoryValid is CategoryValidateError.EmptyCategoryError,
                     mainCategory = state.editModel.mainCategory,
                     subCategory = state.editModel.subCategory,
-                    lockeApps = state.lockedApps,
+                    lockeApps = state.editModel.lockedApps,
                     allCategories = state.categories,
                     onCategoriesChange = onCategoriesChange,
                     onAddSubCategory = onAddSubCategory,

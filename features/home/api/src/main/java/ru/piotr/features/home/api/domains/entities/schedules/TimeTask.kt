@@ -21,6 +21,7 @@ import ru.piotr.core.utils.functional.Mapper
 import ru.piotr.core.utils.functional.TimeRange
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 import java.util.Date
 
 /**
@@ -37,6 +38,7 @@ data class TimeTask(
     val isImportant: Boolean = false,
     val isEnableNotification: Boolean = true,
     val isConsiderInStatistics: Boolean = true,
+    val lockApps: List<LockApp>? = emptyList(),
 ) : Parcelable {
     fun <T> map(mapper: Mapper<TimeTask, T>) = mapper.map(this)
 }

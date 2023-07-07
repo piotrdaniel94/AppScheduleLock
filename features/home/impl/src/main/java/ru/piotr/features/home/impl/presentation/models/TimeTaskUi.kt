@@ -21,6 +21,7 @@ import ru.piotr.core.utils.extensions.duration
 import ru.piotr.core.utils.functional.Mapper
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 import ru.piotr.features.home.api.domains.entities.schedules.status.TimeTaskStatus
 import java.util.*
 
@@ -39,6 +40,7 @@ internal data class TimeTaskUi(
     val progress: Float,
     val mainCategory: MainCategory,
     val subCategory: SubCategory? = null,
+    val lockApps: List<LockApp>? = emptyList(),
     val isCompleted: Boolean = true,
     val isImportant: Boolean = false,
     val isEnableNotification: Boolean = true,

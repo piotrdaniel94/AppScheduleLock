@@ -18,6 +18,7 @@ package ru.piotr.features.editor.impl.domain.entites
 import ru.piotr.core.utils.functional.Mapper
 import ru.piotr.features.home.api.domains.entities.categories.MainCategory
 import ru.piotr.features.home.api.domains.entities.categories.SubCategory
+import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
 import java.util.*
 
 /**
@@ -35,6 +36,7 @@ data class EditModel(
     val isEnableNotification: Boolean = true,
     val isConsiderInStatistics: Boolean = true,
     val templateId: Int? = null,
+    val lockedApps: List<LockApp>? = emptyList(),
 ) {
     fun <T> map(mapper: Mapper<EditModel, T>) = mapper.map(this)
 }

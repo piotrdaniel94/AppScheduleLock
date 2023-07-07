@@ -40,7 +40,7 @@ internal data class EditorViewState(
     val templates: List<Template>? = null,
     val timeRangeValid: TimeRangeError? = null,
     val categoryValid: CategoryValidateError? = null,
-    val lockedApps: List<LockApp>?= null,
+//    val lockedApps: List<LockApp>?= null,
 ) : BaseViewState
 
 internal sealed class EditorEvent : BaseEvent {

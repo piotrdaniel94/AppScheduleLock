@@ -115,11 +115,10 @@ internal class EditorScreenModel @Inject constructor(
         currentState: EditorViewState,
     ) = when (action) {
         is EditorAction.SetUp -> currentState.copy(
-            editModel = action.editModel,
+            editModel = action.editModel?.copy(lockedApps = action.lockApps),
             categories = action.categories,
             timeRangeValid = null,
             categoryValid = null,
-            lockedApps = action.lockApps,
         )
         is EditorAction.UpdateEditModel -> currentState.copy(
             editModel = action.editModel,
@@ -148,7 +147,7 @@ internal class EditorScreenModel @Inject constructor(
             categories = action.categories,
         )
         is EditorAction.UpdateLockedApps -> currentState.copy(
-            lockedApps = action.lockedApps,
+            editModel = currentState.editModel?.copy(lockedApps = action.lockedApps),
         )
     }
 
