@@ -90,10 +90,13 @@ dependencies {
 
     implementation(Dependencies.Compose.ui)
     implementation(Dependencies.Compose.activity)
-
+    implementation(Dependencies.AppLock.reactvex)
     implementation(Dependencies.Dagger.core)
 
     implementation(Dependencies.Room.core)
+    implementation(Dependencies.AppLock.roomrx)
     implementation(Dependencies.Room.ktx)
     kapt(Dependencies.Room.kapt)
+
+    implementation(Dependencies.AppLock.reactvex)
 }

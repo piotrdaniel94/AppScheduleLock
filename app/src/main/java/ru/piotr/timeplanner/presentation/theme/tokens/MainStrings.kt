@@ -23,16 +23,22 @@ import androidx.compose.runtime.compositionLocalOf
 data class MainStrings(
     val authorTitle: String,
     val launcherIconDesc: String,
+    val notificationProtectingTitle: String,
+    val notificationProtectingDescription: String,
 )
 
 val englishMainStrings = MainStrings(
     authorTitle = "Created by Aleshin Stanislav",
     launcherIconDesc = "Time Planner",
+    notificationProtectingTitle = "Protecting your apps",
+    notificationProtectingDescription = "Lock your apps to protect your privacy.",
 )
 
 val russianMainStrings = MainStrings(
     authorTitle = "Created by Aleshin Stanislav",
     launcherIconDesc = "Time Planner",
+    notificationProtectingTitle = "Защита ваших приложений",
+    notificationProtectingDescription = "Блокируйте свои приложения, чтобы защитить вашу конфиденциальность.",
 )
 
 val LocalMainStrings = compositionLocalOf<MainStrings> {

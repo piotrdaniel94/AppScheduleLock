@@ -100,7 +100,6 @@ android {
 }
 
 dependencies {
-
     implementation(project(":module-injector"))
 
     implementation(project(":core:utils"))
@@ -122,6 +121,10 @@ dependencies {
     implementation(Dependencies.AndroidX.material)
     implementation(Dependencies.AndroidX.googleMaterial)
     implementation(Dependencies.AndroidX.lifecycleRuntime)
+    implementation(Dependencies.AndroidX.lifecycleViewModel)
+    implementation(Dependencies.AndroidX.lifecycleExtension)
+    implementation(Dependencies.AppLock.dagger)
+    kapt(Dependencies.AppLock.kapt)
 
     implementation(Dependencies.Compose.ui)
     implementation(Dependencies.Compose.activity)
@@ -136,8 +139,17 @@ dependencies {
     implementation(Dependencies.Voyager.screenModel)
     implementation(Dependencies.Voyager.transitions)
 
+    implementation(Dependencies.AppLock.reactvex)
+    implementation(Dependencies.AppLock.bugsnag)
+    implementation(Dependencies.AppLock.dagger)
+
+    implementation(Dependencies.Work.runtime)
+    implementation(Dependencies.Work.rxjava2)
+
     debugImplementation(Dependencies.Compose.uiTooling)
     debugImplementation(Dependencies.Compose.uiTestManifest)
 
     debugImplementation(Dependencies.Leakcanary.library)
+
+
 }

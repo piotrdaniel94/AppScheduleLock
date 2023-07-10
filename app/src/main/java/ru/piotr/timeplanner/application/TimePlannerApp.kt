@@ -21,6 +21,8 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 import ru.piotr.core.ui.theme.tokens.TimePlannerStrings
 import ru.piotr.core.ui.theme.tokens.fetchAppLanguage
 import ru.piotr.core.ui.theme.tokens.fetchCoreStrings
@@ -29,11 +31,15 @@ import ru.piotr.core.utils.functional.Constants
 import ru.piotr.core.utils.notifications.parameters.NotificationDefaults
 import ru.piotr.core.utils.notifications.parameters.NotificationPriority
 import ru.piotr.timeplanner.di.component.AppComponent
+import ru.piotr.timeplanner.service.ServiceStarter
+import ru.piotr.timeplanner.service.worker.WorkerStarter
+
+//import ru.piotr.timeplanner.service.ServiceStarter
 
 /**
  * @author Stanislav Aleshin on 14.02.2023.
  */
-class TimePlannerApp : Application() {
+class TimePlannerApp : DaggerApplication() {
 
     val appComponent by lazy {
         AppComponent.create(applicationContext)
@@ -51,6 +57,12 @@ class TimePlannerApp : Application() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createTimeTaskNotifyChannel()
         }
+//        ServiceStarter.startService(this)
+    }
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication>{
+//        return  DaggerAppComponent.builder().application(applicationContext)
+        return appComponent
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

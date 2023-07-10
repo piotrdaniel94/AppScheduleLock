@@ -16,10 +16,8 @@
 package ru.piotr.features.home.api.data.datasources.lockapps
 
 import androidx.room.*
-import ru.piotr.features.home.api.data.models.categories.SubCategoryEntity
-import ru.piotr.features.home.api.domains.entities.lockapp.LockApp
+import io.reactivex.Flowable
 
-//import io.reactivex.Flowable
 
 @Dao
 interface LockedAppsDao {
@@ -30,8 +28,8 @@ interface LockedAppsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun lockApps(lockedAppEntityList: List<LockedAppEntity>)
 
-//    @Query("SELECT * FROM locked_app")
-//    abstract fun getLockedApps(): Flowable<List<LockedAppEntity>>
+    @Query("SELECT * FROM lockedApps")
+    abstract fun getLockedApps(): Flowable<List<LockedAppEntity>>
 
     @Query("SELECT * FROM lockedApps")
     suspend fun getLockedAppsSync(): List<LockedAppEntity>

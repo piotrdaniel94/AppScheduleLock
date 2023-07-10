@@ -28,8 +28,9 @@ object Dependencies {
 
         const val systemUiController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.accompanist}"
         const val placeHolder = "com.google.accompanist:accompanist-placeholder-material:${Versions.accompanist}"
-        const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+        const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel:${Versions.lifecycle}"
         const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+        const val lifecycleExtension = "android.arch.lifecycle:extensions:1.1.1"
     }
 
     object Google {
@@ -75,6 +76,10 @@ object Dependencies {
     object AppLock {
         const val recycler = "androidx.recyclerview:recyclerview:1.3.0"
         const val reactvex =  "io.reactivex.rxjava2:rxandroid:2.1.1"
+        const val bugsnag = "com.bugsnag:bugsnag-android:4.13.0"
+        const val roomrx = "androidx.room:room-rxjava2:2.2.0"
+        const val dagger = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+        const val kapt = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     }
 
     object Test {
@@ -86,4 +91,8 @@ object Dependencies {
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     }
 
+    object Work {
+        const val runtime = "android.arch.work:work-runtime:1.0.1"
+        const val rxjava2 = "android.arch.work:work-rxjava2:1.0.1"
+    }
 }

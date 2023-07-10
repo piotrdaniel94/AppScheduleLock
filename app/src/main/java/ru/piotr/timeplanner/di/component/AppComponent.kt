@@ -18,6 +18,10 @@ package ru.piotr.timeplanner.di.component
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
+import dagger.android.support.AndroidSupportInjectionModule
 import ru.piotr.core.utils.navigation.navigator.NavigatorManager
 import ru.piotr.core.utils.notifications.NotificationCreator
 import ru.piotr.features.analytics.impl.di.AnalyticsFeatureDependencies
@@ -25,6 +29,7 @@ import ru.piotr.features.editor.impl.di.EditorFeatureDependencies
 import ru.piotr.features.home.impl.di.HomeFeatureDependencies
 import ru.piotr.features.settings.impl.di.SettingsFeatureDependencies
 import ru.piotr.features.lockapps.impl.di.LockAppsFeatureDependencies
+import ru.piotr.timeplanner.application.TimePlannerApp
 import ru.piotr.timeplanner.di.annotation.TabNavigation
 import ru.piotr.timeplanner.di.modules.*
 import ru.piotr.timeplanner.presentation.ui.main.MainActivity
@@ -46,6 +51,7 @@ import javax.inject.Singleton
         DomainModules::class,
         DependenciesModule::class,
         FeatureModule::class,
+        AndroidInjectionModule::class
     ],
 )
 interface AppComponent :
@@ -53,7 +59,8 @@ interface AppComponent :
     AnalyticsFeatureDependencies,
     SettingsFeatureDependencies,
     LockAppsFeatureDependencies,
-    EditorFeatureDependencies{
+    EditorFeatureDependencies,
+    AndroidInjector<DaggerApplication> {
 
     @TabNavigation
     fun fetchTabNavigatorManager(): NavigatorManager
@@ -63,13 +70,25 @@ interface AppComponent :
     fun inject(activity: MainActivity)
 
     @Component.Builder
-    interface Builder {
+    abstract interface Builder {
         @BindsInstance
         fun applicationContext(context: Context): Builder
         fun navigationModule(module: NavigationModule): Builder
         fun featureModule(module: FeatureModule): Builder
         fun dataBaseModule(module: DataBaseModule): Builder
         fun build(): AppComponent
+
+//        fun application(context: Context): AndroidInjector<DaggerApplication>
+//        companion object {
+//            fun application(tcontext: Context): AndroidInjector<out DaggerApplication> {
+//                return DaggerAppComponent.builder()
+//                    .applicationContext(tcontext)
+//                    .navigationModule(NavigationModule())
+//                    .featureModule(FeatureModule())
+//                    .dataBaseModule(DataBaseModule())
+//                    .build()
+//            }
+//        }
     }
 
     companion object {
